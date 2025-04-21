@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Calendar, Image, Loader2, Save } from 'lucide-react';
+import { Calendar, Image, Loader2, Save, Banknote } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -19,6 +19,10 @@ interface WeddingDetailsFormProps {
     venueMapLink: string;
     wazeLink: string;
     bitNumber: string;
+    bankNumber: string;
+    bankBranch: string;
+    bankAccountNumber: string;
+    bankAccountHolder: string;
     backgroundImage: string;
   };
   onUpdate: (details: any) => void;
@@ -241,7 +245,7 @@ export const WeddingDetailsForm = ({ weddingDetails, onUpdate }: WeddingDetailsF
           <Separator />
           
           <div className="space-y-2">
-            <Label htmlFor="bitNumber">מספר טלפון לביט (של החתן)</Label>
+            <Label htmlFor="bitNumber">מספר טלפון לביט</Label>
             <Input
               id="bitNumber"
               name="bitNumber"
@@ -250,6 +254,65 @@ export const WeddingDetailsForm = ({ weddingDetails, onUpdate }: WeddingDetailsF
               value={formData.bitNumber}
               onChange={handleChange}
             />
+          </div>
+          
+          <Separator />
+          
+          <div className="space-y-1">
+            <Label className="flex items-center gap-2 text-lg font-medium mb-2">
+              <Banknote className="h-4 w-4" />
+              פרטי חשבון בנק להעברה
+            </Label>
+            
+            <div className="space-y-3 pl-2 border-l-2 border-gray-200 py-2">
+              <div className="space-y-2">
+                <Label htmlFor="bankAccountHolder">שם בעל החשבון</Label>
+                <Input
+                  id="bankAccountHolder"
+                  name="bankAccountHolder"
+                  dir="rtl"
+                  value={formData.bankAccountHolder}
+                  onChange={handleChange}
+                  placeholder="שם מלא של בעל החשבון"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="bankNumber">מספר בנק</Label>
+                <Input
+                  id="bankNumber"
+                  name="bankNumber"
+                  dir="rtl"
+                  value={formData.bankNumber}
+                  onChange={handleChange}
+                  placeholder="מספר הבנק (לדוגמה: 12)"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="bankBranch">מספר סניף</Label>
+                <Input
+                  id="bankBranch"
+                  name="bankBranch"
+                  dir="rtl"
+                  value={formData.bankBranch}
+                  onChange={handleChange}
+                  placeholder="מספר הסניף (לדוגמה: 645)"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="bankAccountNumber">מספר חשבון</Label>
+                <Input
+                  id="bankAccountNumber"
+                  name="bankAccountNumber"
+                  dir="rtl"
+                  value={formData.bankAccountNumber}
+                  onChange={handleChange}
+                  placeholder="מספר החשבון (לדוגמה: 321151)"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </CardContent>

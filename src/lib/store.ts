@@ -13,7 +13,7 @@ interface WeddingDetails {
   venueMapLink: string;
   wazeLink: string;
   bitNumber: string;
-  // New bank details
+  // Bank details
   bankNumber: string;
   bankBranch: string;
   bankAccountNumber: string;
@@ -47,6 +47,10 @@ export const useWeddingStore = create<WeddingStore>()(
         venueMapLink: 'https://maps.app.goo.gl/bCwkYKKQqU2JM8PV6',
         wazeLink: 'https://waze.com/ul?ll=31.6309,34.7880&navigate=yes&q=אולמי+דוריה,+חמי+יואב',
         bitNumber: '',
+        bankNumber: '',
+        bankBranch: '',
+        bankAccountNumber: '',
+        bankAccountHolder: '',
         backgroundImage: '/lovable-uploads/c9313de6-ff70-4b11-9d08-40b1cab40910.png',
       },
       guestRSVPs: {},

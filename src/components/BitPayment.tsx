@@ -1,5 +1,5 @@
 
-import { CreditCard, Bank } from 'lucide-react';
+import { CreditCard, Banknote } from 'lucide-react';
 import { useWeddingStore } from '@/lib/store';
 
 export const BitPayment = () => {

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -26,6 +25,10 @@ const Admin = () => {
     venueMapLink: '',
     wazeLink: '',
     bitNumber: '',
+    bankNumber: '',
+    bankBranch: '',
+    bankAccountNumber: '',
+    bankAccountHolder: '',
     backgroundImage: '',
   });
   
@@ -67,11 +70,14 @@ const Admin = () => {
           venueMapLink: weddingData.venue_map_link || '',
           wazeLink: weddingData.waze_link || '',
           bitNumber: weddingData.bit_number || '',
+          bankNumber: weddingData.bank_number || '',
+          bankBranch: weddingData.bank_branch || '',
+          bankAccountNumber: weddingData.bank_account_number || '',
+          bankAccountHolder: weddingData.bank_account_holder || '',
           backgroundImage: weddingData.background_image || '',
         };
         
         setWeddingDetails(details);
-        // Update the global store as well
         updateWeddingDetails({
           coupleNames: details.coupleNames,
           weddingDate: details.weddingDate,
@@ -80,6 +86,10 @@ const Admin = () => {
           venueMapLink: details.venueMapLink,
           wazeLink: details.wazeLink,
           bitNumber: details.bitNumber,
+          bankNumber: details.bankNumber,
+          bankBranch: details.bankBranch,
+          bankAccountNumber: details.bankAccountNumber,
+          bankAccountHolder: details.bankAccountHolder,
           backgroundImage: details.backgroundImage,
         });
       }
@@ -151,6 +161,10 @@ const Admin = () => {
           venue_map_link: updatedDetails.venueMapLink,
           waze_link: updatedDetails.wazeLink,
           bit_number: updatedDetails.bitNumber,
+          bank_number: updatedDetails.bankNumber,
+          bank_branch: updatedDetails.bankBranch,
+          bank_account_number: updatedDetails.bankAccountNumber,
+          bank_account_holder: updatedDetails.bankAccountHolder,
           background_image: updatedDetails.backgroundImage,
         })
         .eq('id', weddingDetails.id);
@@ -162,7 +176,6 @@ const Admin = () => {
         ...updatedDetails
       });
       
-      // Update the global store as well
       updateWeddingDetails({
         coupleNames: updatedDetails.coupleNames,
         weddingDate: updatedDetails.weddingDate,
@@ -171,6 +184,10 @@ const Admin = () => {
         venueMapLink: updatedDetails.venueMapLink,
         wazeLink: updatedDetails.wazeLink,
         bitNumber: updatedDetails.bitNumber,
+        bankNumber: updatedDetails.bankNumber,
+        bankBranch: updatedDetails.bankBranch,
+        bankAccountNumber: updatedDetails.bankAccountNumber,
+        bankAccountHolder: updatedDetails.bankAccountHolder,
         backgroundImage: updatedDetails.backgroundImage,
       });
       
