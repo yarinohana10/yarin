@@ -1,8 +1,9 @@
+
 import { format } from 'date-fns';
 import { he } from 'date-fns/locale';
 import { formatInTimeZone } from 'date-fns-tz';
 import { Link } from 'react-router-dom';
-import { Settings, Clock } from 'lucide-react';
+import { Settings, Clock, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Countdown } from '@/components/Countdown';
 import { RSVPButtons } from '@/components/RSVPButtons';
@@ -39,6 +40,10 @@ const Index = () => {
             venueMapLink: weddingData.venue_map_link || '',
             wazeLink: weddingData.waze_link || '',
             bitNumber: weddingData.bit_number || '',
+            bankNumber: weddingData.bank_number || '',
+            bankBranch: weddingData.bank_branch || '',
+            bankAccountNumber: weddingData.bank_account_number || '',
+            bankAccountHolder: weddingData.bank_account_holder || '',
             backgroundImage: weddingData.background_image || '/lovable-uploads/5e2b1d00-93e9-43a5-a19a-6d625b2e97af.png',
           });
         }
@@ -125,11 +130,7 @@ const Index = () => {
               </div>
               <div className="flex flex-col items-center justify-center text-lg">
                 <span className="text-[#333333]">חופה וקידושין</span>
-                <img 
-                  src="/lovable-uploads/09a9834a-14f7-4992-a91c-01af22e74d1e.png"
-                  alt="Heart Icon"
-                  className="h-5 w-5 text-[#333333] mx-2 my-1"
-                />
+                <Heart className="h-5 w-5 text-[#333333] mx-2 my-1 bg-white/0" />
                 <span className="text-[#333333]">20:30</span>
               </div>
             </div>
