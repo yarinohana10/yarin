@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import { he } from 'date-fns/locale';
 import { formatInTimeZone } from 'date-fns-tz';
 import { Link } from 'react-router-dom';
-import { Settings, Heart, Clock } from 'lucide-react';
+import { Settings, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Countdown } from '@/components/Countdown';
 import { RSVPButtons } from '@/components/RSVPButtons';
@@ -98,7 +98,11 @@ const Index = () => {
           <div className="wedding-card p-8 md:p-10 text-center animate-fadeIn">
             <div className="flex justify-center items-center mb-6">
               <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
-              <Heart className="mx-4 text-[#F0B6BC] animate-pulse-gentle h-8 w-8" />
+              <img 
+                src="/lovable-uploads/e4fbc1e4-4b39-4040-b949-bbf0d6692f2f.png" 
+                alt="O & Y Monogram" 
+                className="mx-4 h-16 w-16 object-contain"
+              />
               <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
             </div>
             
