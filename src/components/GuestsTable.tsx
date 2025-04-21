@@ -67,30 +67,40 @@ export function GuestsTable({ weddingId, status, onRefresh }: GuestsTableProps) 
     }
   };
 
-  const handleGuestUpdate = () => {
-    console.log("Refreshing guest list...");
-    fetchGuests();
-    if (onRefresh) onRefresh();
-  };
-
-  const deleteGuest = async (guestId: string) => {
+  const handleGuestDelete = async (guestId: string) => {
     console.log("Deleting guest with ID:", guestId);
     
-    const success = await handleDeleteGuest(guestId);
-    console.log("Deletion result:", success);
-    
-    if (success) {
-      console.log("Deletion successful, refreshing lists");
-      
-      fetchGuests();
-      
-      if (onRefresh) {
-        console.log("Calling onRefresh after successful deletion");
-        onRefresh();
-      }
+    if (!weddingId) {
+      console.error("Missing wedding ID");
+      return false;
     }
     
-    return success;
+    try {
+      const success = await handleDeleteGuest(guestId);
+      
+      if (success) {
+        console.log("Delete successful, refreshing data");
+        
+        fetchGuests();
+        
+        if (onRefresh) {
+          onRefresh();
+        }
+        
+        return true;
+      }
+      
+      return false;
+    } catch (error) {
+      console.error("Error deleting guest:", error);
+      return false;
+    }
+  };
+
+  const handleGuestUpdate = () => {
+    console.log("Refreshing guest list after update");
+    fetchGuests();
+    if (onRefresh) onRefresh();
   };
 
   if (loading) {
@@ -141,7 +151,7 @@ export function GuestsTable({ weddingId, status, onRefresh }: GuestsTableProps) 
                 <GuestTableRow 
                   key={guest.id} 
                   guest={guest}
-                  onDelete={deleteGuest}
+                  onDelete={handleGuestDelete}
                   onUpdate={handleGuestUpdate}
                 />
               ))}

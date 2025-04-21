@@ -55,21 +55,22 @@ export function GuestTableRow({ guest, onDelete, onUpdate }: GuestTableRowProps)
   };
   
   const handleDelete = async () => {
+    if (isDeleting) return; // Prevent double clicks
+    
     setIsDeleting(true);
     try {
       console.log('Starting deletion process for guest ID:', guest.id);
       
-      // Call the delete function with the guest ID and wait for the result
+      // Call the delete function and wait for the result
       const success = await onDelete(guest.id);
       console.log('Deletion response:', success);
       
       if (success) {
-        // Close the alert dialog 
+        // Close the alert dialog on success
         setIsAlertOpen(false);
         
-        // Update the UI by calling the parent update function
+        // Trigger the update to refresh data
         onUpdate();
-        console.log('UI updated after deletion');
       }
     } catch (error) {
       console.error('Error in handleDelete:', error);

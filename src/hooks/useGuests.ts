@@ -44,27 +44,27 @@ export const useGuests = (weddingId: string | undefined, status: string) => {
   };
 
   const handleDeleteGuest = async (guestId: string) => {
-    if (!weddingId || !guestId) {
-      console.error('Missing required parameters: weddingId or guestId');
-      return false;
-    }
-    
     try {
-      console.log('Executing deletion for guest ID:', guestId, 'and wedding ID:', weddingId);
+      // Validate inputs
+      if (!weddingId || !guestId) {
+        throw new Error('Missing required parameters: weddingId or guestId');
+      }
       
-      // Using more specific query with both ID and wedding_id
-      const { error, count } = await supabase
+      console.log('Deleting guest:', guestId, 'from wedding:', weddingId);
+      
+      // Execute the delete operation
+      const { error } = await supabase
         .from('guests')
         .delete()
         .eq('id', guestId)
         .eq('wedding_id', weddingId);
-        
+      
       if (error) {
-        console.error('Error from Supabase when deleting:', error);
+        console.error('Supabase deletion error:', error);
         throw error;
       }
       
-      console.log('Guest deletion completed, affected rows:', count);
+      console.log('Guest deleted successfully from the database');
       
       // Update local state after successful deletion
       setGuests(prev => prev.filter(guest => guest.id !== guestId));
@@ -75,7 +75,7 @@ export const useGuests = (weddingId: string | undefined, status: string) => {
       
       return true;
     } catch (error: any) {
-      console.error('Error deleting guest:', error);
+      console.error('Error in handleDeleteGuest:', error);
       toast({
         title: 'שגיאה במחיקת האורח',
         description: error.message,
