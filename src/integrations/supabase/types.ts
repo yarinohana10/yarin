@@ -56,6 +56,10 @@ export type Database = {
       wedding_events: {
         Row: {
           background_image: string | null
+          bank_account_holder: string | null
+          bank_account_number: string | null
+          bank_branch: string | null
+          bank_number: string | null
           bit_number: string | null
           couple_names: string
           created_at: string
@@ -69,6 +73,10 @@ export type Database = {
         }
         Insert: {
           background_image?: string | null
+          bank_account_holder?: string | null
+          bank_account_number?: string | null
+          bank_branch?: string | null
+          bank_number?: string | null
           bit_number?: string | null
           couple_names: string
           created_at?: string
@@ -82,6 +90,10 @@ export type Database = {
         }
         Update: {
           background_image?: string | null
+          bank_account_holder?: string | null
+          bank_account_number?: string | null
+          bank_branch?: string | null
+          bank_number?: string | null
           bit_number?: string | null
           couple_names?: string
           created_at?: string

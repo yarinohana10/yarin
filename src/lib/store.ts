@@ -13,6 +13,11 @@ interface WeddingDetails {
   venueMapLink: string;
   wazeLink: string;
   bitNumber: string;
+  // New bank details
+  bankNumber: string;
+  bankBranch: string;
+  bankAccountNumber: string;
+  bankAccountHolder: string;
   backgroundImage: string;
 }
 
