@@ -1,4 +1,3 @@
-
 import { format } from 'date-fns';
 import { he } from 'date-fns/locale';
 import { formatInTimeZone } from 'date-fns-tz';
@@ -126,7 +125,11 @@ const Index = () => {
               </div>
               <div className="flex flex-col items-center justify-center text-lg">
                 <span className="text-[#333333]">חופה וקידושין</span>
-                <Heart className="h-5 w-5 text-[#333333] mx-2 my-1" />
+                <img 
+                  src="/lovable-uploads/09a9834a-14f7-4992-a91c-01af22e74d1e.png"
+                  alt="Heart Icon"
+                  className="h-5 w-5 text-[#333333] mx-2 my-1"
+                />
                 <span className="text-[#333333]">20:30</span>
               </div>
             </div>
