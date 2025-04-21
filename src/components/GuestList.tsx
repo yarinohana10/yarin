@@ -36,6 +36,7 @@ export const GuestList = () => {
       if (!weddingId) return;
       
       try {
+        setLoading(true);
         // Use the standard anon key, not auth
         const { data, error } = await supabase
           .from('guests')

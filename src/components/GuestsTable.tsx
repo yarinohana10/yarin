@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -68,21 +69,29 @@ export function GuestsTable({ weddingId, status, onRefresh }: GuestsTableProps) 
   };
 
   const handleGuestDelete = async (guestId: string) => {
-    console.log("Deleting guest with ID:", guestId);
+    console.log("Deleting guest with ID:", guestId, "from wedding ID:", weddingId);
     
     if (!weddingId) {
-      console.error("Missing wedding ID");
+      console.error("Missing wedding ID for deletion");
+      toast({
+        title: "שגיאה במחיקת האורח",
+        description: "מזהה האירוע חסר",
+        variant: "destructive",
+      });
       return false;
     }
     
     try {
+      // Pass the guest ID to the delete function
       const success = await handleDeleteGuest(guestId);
       
       if (success) {
         console.log("Delete successful, refreshing data");
         
+        // Refresh the guest list
         fetchGuests();
         
+        // Call the parent refresh function if provided
         if (onRefresh) {
           onRefresh();
         }

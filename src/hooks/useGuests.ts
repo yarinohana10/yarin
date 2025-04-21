@@ -50,14 +50,16 @@ export const useGuests = (weddingId: string | undefined, status: string) => {
         throw new Error('Missing required parameters: weddingId or guestId');
       }
       
-      console.log('Deleting guest:', guestId, 'from wedding:', weddingId);
+      console.log('Deleting guest:', guestId, 'from wedding ID:', weddingId);
       
-      // Execute the delete operation
+      // Execute the delete operation with explicit wedding_id check
       const { error } = await supabase
         .from('guests')
         .delete()
-        .eq('id', guestId)
-        .eq('wedding_id', weddingId);
+        .match({ 
+          id: guestId, 
+          wedding_id: weddingId 
+        });
       
       if (error) {
         console.error('Supabase deletion error:', error);
