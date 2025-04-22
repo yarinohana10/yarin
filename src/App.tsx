@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Loader2 } from "lucide-react";
 
+
 // Lazy load components to improve initial load time
 const Admin = lazy(() => import("./pages/Admin"));
 const Auth = lazy(() => import("./pages/Auth"));
