@@ -1,3 +1,4 @@
+
 import { format } from 'date-fns';
 import { he } from 'date-fns/locale';
 import { formatInTimeZone } from 'date-fns-tz';
@@ -98,34 +99,34 @@ const Index = () => {
       
       <div className="flex-1 container mx-auto px-4 py-12 flex flex-col items-center justify-center">
         <div className="max-w-3xl w-full space-y-8">
-          <div className="wedding-card p-8 md:p-10 text-center animate-fadeIn">
+          <div className="wedding-card p-8 md:p-10 text-center animate-fadeIn bg-white/90 backdrop-blur-sm rounded-lg shadow-lg">
             <div className="flex justify-center items-center mb-6">
               <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
               <img 
-                src="/lovable-uploads/2d9890af-82c2-4897-aa48-062412900113.png"
-                alt="Wedding main theme" 
+                src="/lovable-uploads/994e3256-15d1-42d2-bdb8-1d09b9cc4927.png"
+                alt="Wedding logo" 
                 className="mx-4 h-16 w-16 object-contain"
               />
               <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
             </div>
             
-            <h1 className="wedding-title mb-4 uppercase">
+            <h1 className="wedding-title mb-4 uppercase text-3xl font-bold text-[#333333]">
               ORAN &amp; YARIN
             </h1>
-            <p className="wedding-subtitle uppercase font-bold">ARE GETTING MARRIED</p>
+            <p className="wedding-subtitle uppercase font-bold text-[#333333]">ARE GETTING MARRIED</p>
             
             <Separator className="my-4 bg-[#D4AF7A]/30" />
             
-            <p className="wedding-subtitle mb-6 mt-4">נרגשים להזמינכם לחגוג איתנו את היום המאושר בחיינו</p>
-            <p className="mb-2 text-xl font-semibold">א' בסיוון התשפ"ה</p>
-            <p className="mb-6 text-xl">27.05.2025</p>
-            <p className="mb-6 text-xl">{weddingDetails.venueName}, {weddingDetails.venueAddress}</p>
+            <p className="wedding-subtitle mb-6 mt-4 text-[#333333]">נרגשים להזמינכם לחגוג איתנו את היום המאושר בחיינו</p>
+            <p className="mb-2 text-xl font-semibold text-[#333333]">א' בסיוון התשפ"ה</p>
+            <p className="mb-6 text-xl text-[#333333]">27.05.2025</p>
+            <p className="mb-6 text-xl text-[#333333]">{weddingDetails.venueName}, {weddingDetails.venueAddress}</p>
             
             <div className="flex flex-row justify-center gap-12 my-4">
               <div className="flex flex-col items-center justify-center text-lg">
-                <span>קבלת פנים</span>
+                <span className="text-[#333333]">קבלת פנים</span>
                 <Clock className="h-5 w-5 text-[#333333] mx-2 my-1" />
-                <span>19:30</span>
+                <span className="text-[#333333]">19:30</span>
               </div>
               <div className="flex flex-col items-center justify-center text-lg">
                 <span className="text-[#333333]">חופה וקידושין</span>
@@ -143,7 +144,7 @@ const Index = () => {
           
           <MapLinks />
           
-          <div className="wedding-card">
+          <div className="wedding-card bg-white/90 backdrop-blur-sm rounded-lg shadow-lg">
             <BitPayment />
           </div>
         </div>
