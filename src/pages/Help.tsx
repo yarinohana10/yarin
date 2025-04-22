@@ -11,7 +11,7 @@ const Help = () => {
     <DashboardLayout>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold tracking-tight">Help Center</h1>
-        <Button variant="gradient" size="sm" className="gap-1">
+        <Button variant="primary" size="sm" className="gap-1 bg-wedding-gradient text-white">
           Contact Support <ChevronRight size={16} />
         </Button>
       </div>
