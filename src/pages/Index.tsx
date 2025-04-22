@@ -1,4 +1,3 @@
-
 import { format } from 'date-fns';
 import { he } from 'date-fns/locale';
 import { formatInTimeZone } from 'date-fns-tz';
@@ -112,18 +111,17 @@ const Index = () => {
               <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
             </div>
             
-            {/* כותרות בעיצוב Heebo בלבד */}
             <h1 className="mb-4 text-3xl font-bold text-[#1A1A2E] font-heebo">
-              אורן וירין
+              Oran & Yarin
             </h1>
             <p className="mb-4 text-xl font-bold text-[#1A1A2E] font-heebo">
-              מתחתנים!
+              Are Getting Married!
             </p>
             
             <Separator className="my-4 bg-[#D4AF7A]/30" />
             
             <p className="mb-6 mt-4 text-[#333333] text-lg font-heebo">
-              נרגשים להזמינכם לחגוג איתנו את היום המאושר בחיינו
+              We are excited to invite you to celebrate our special day
             </p>
             <p className="mb-2 text-xl font-semibold text-[#333333] font-heebo">א' בסיוון התשפ"ה</p>
             <p className="mb-6 text-xl text-[#333333] font-heebo">27.05.2025</p>
