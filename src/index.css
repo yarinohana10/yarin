@@ -57,6 +57,7 @@
   /* RTL Support */
   html {
     direction: rtl;
+    font-family: 'Heebo', sans-serif;
   }
 }
 

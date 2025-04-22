@@ -1,12 +1,60 @@
 
+import { useState, useEffect } from 'react';
 import { CreditCard, Banknote } from 'lucide-react';
 import { useWeddingStore } from '@/lib/store';
+import { supabase } from '@/integrations/supabase/client';
 
 export const BitPayment = () => {
   const { weddingDetails } = useWeddingStore();
+  const [bankDetails, setBankDetails] = useState({
+    bankAccountHolder: '',
+    bankNumber: '',
+    bankBranch: '',
+    bankAccountNumber: ''
+  });
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const fetchBankDetails = async () => {
+      if (!weddingDetails.id) return;
+      
+      try {
+        // First try to get from bank_transfers table
+        const { data: bankData, error: bankError } = await supabase
+          .from('bank_transfers')
+          .select('*')
+          .eq('wedding_id', weddingDetails.id)
+          .order('created_at', { ascending: false })
+          .limit(1);
+        
+        if (!bankError && bankData && bankData.length > 0) {
+          setBankDetails({
+            bankAccountHolder: bankData[0].bank_account_holder,
+            bankNumber: bankData[0].bank_number,
+            bankBranch: bankData[0].bank_branch,
+            bankAccountNumber: bankData[0].bank_account_number
+          });
+        } else {
+          // Fallback to wedding_events table
+          setBankDetails({
+            bankAccountHolder: weddingDetails.bankAccountHolder,
+            bankNumber: weddingDetails.bankNumber,
+            bankBranch: weddingDetails.bankBranch,
+            bankAccountNumber: weddingDetails.bankAccountNumber
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching bank details:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchBankDetails();
+  }, [weddingDetails.id]);
   
   // Only show if bit number or bank details exist
-  if (!weddingDetails.bitNumber && !weddingDetails.bankNumber) return null;
+  if (!weddingDetails.bitNumber && !bankDetails.bankNumber) return null;
   
   const bitLink = weddingDetails.bitNumber
     ? `https://www.bitpay.co.il/app/pay?phone=${weddingDetails.bitNumber.replace(/-/g, '')}`
@@ -48,25 +96,25 @@ export const BitPayment = () => {
           )}
         </div>
         
-        {weddingDetails.bankNumber && (
+        {bankDetails.bankNumber && !loading && (
           <div className="bg-white/95 border border-gray-200 rounded-xl p-4 max-w-md mx-auto">
             <h4 className="text-xl font-semibold mb-3 text-[#1A1A2E]">העברה בנקאית</h4>
             <div className="space-y-2 text-[#1A1A2E]/80">
               <div className="flex justify-between">
                 <span>שם בעל החשבון:</span>
-                <span>{weddingDetails.bankAccountHolder}</span>
+                <span>{bankDetails.bankAccountHolder}</span>
               </div>
               <div className="flex justify-between">
                 <span>מספר בנק:</span>
-                <span>{weddingDetails.bankNumber}</span>
+                <span>{bankDetails.bankNumber}</span>
               </div>
               <div className="flex justify-between">
                 <span>מספר סניף:</span>
-                <span>{weddingDetails.bankBranch}</span>
+                <span>{bankDetails.bankBranch}</span>
               </div>
               <div className="flex justify-between">
                 <span>מספר חשבון:</span>
-                <span>{weddingDetails.bankAccountNumber}</span>
+                <span>{bankDetails.bankAccountNumber}</span>
               </div>
             </div>
           </div>

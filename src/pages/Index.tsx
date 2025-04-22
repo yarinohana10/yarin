@@ -33,6 +33,7 @@ const Index = () => {
         if (data && data.length > 0) {
           const weddingData = data[0];
           updateWeddingDetails({
+            id: weddingData.id,
             coupleNames: weddingData.couple_names,
             weddingDate: weddingData.wedding_date,
             venueName: weddingData.venue_name,
@@ -84,7 +85,7 @@ const Index = () => {
 
   return (
     <div 
-      className="min-h-screen flex flex-col bg-[#F9F5F2]" 
+      className="min-h-screen flex flex-col bg-[#F9F5F2] font-heebo" 
       style={backgroundStyle}
     >
       <Confetti />
@@ -105,7 +106,8 @@ const Index = () => {
               <img 
                 src="/lovable-uploads/994e3256-15d1-42d2-bdb8-1d09b9cc4927.png"
                 alt="Wedding logo" 
-                className="mx-4 h-16 w-16 object-contain"
+                className="mx-4 h-18 w-18 object-contain"
+                style={{ height: "68px", width: "68px" }}
               />
               <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
             </div>
@@ -151,7 +153,7 @@ const Index = () => {
       </div>
       
       <footer className="py-4 text-center text-white bg-black/40 backdrop-blur-sm">
-        <p className="text-sm">
+        <p className="text-sm font-heebo">
           oran &amp; yarin | {format(weddingDate, 'dd.MM.yyyy')}
         </p>
       </footer>
