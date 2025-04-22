@@ -1,4 +1,3 @@
-
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,7 +10,11 @@ const Help = () => {
     <DashboardLayout>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold tracking-tight">Help Center</h1>
-        <Button variant="primary" size="sm" className="gap-1 bg-wedding-gradient text-white">
+        <Button 
+          variant="secondary" 
+          size="sm" 
+          className="gap-1 bg-wedding-gradient text-white hover:opacity-90"
+        >
           Contact Support <ChevronRight size={16} />
         </Button>
       </div>
