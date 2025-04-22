@@ -20,10 +20,22 @@ export function AddGuestForm({ weddingId, onSuccess, onCancel }: AddGuestFormPro
     phone_number: '',
     status: 'pending',
     guest_count: 1,
-    meal_preference: 'רגיל',
   });
-  
+  // כל מנה אורח
+  const [guestMeals, setGuestMeals] = useState<string[]>(['רגיל']);
   const { toast } = useToast();
+
+  // התרעננות לפי כמות מגיעים
+  const handleGuestCountChange = (value: string) => {
+    const count = parseInt(value, 10) || 1;
+    setNewGuest({ ...newGuest, guest_count: count });
+    setGuestMeals((prev) => {
+      const arr = [...prev];
+      while (arr.length < count) arr.push('רגיל');
+      while (arr.length > count) arr.pop();
+      return arr;
+    });
+  };
 
   const validatePhoneNumber = (phone: string) => {
     const numberOnly = phone.replace(/\D/g, '');
@@ -46,8 +58,9 @@ export function AddGuestForm({ weddingId, onSuccess, onCancel }: AddGuestFormPro
       });
       return;
     }
-    
+
     try {
+      const meal_preference = guestMeals.join(', ');
       const { error } = await supabase
         .from('guests')
         .insert({
@@ -56,17 +69,17 @@ export function AddGuestForm({ weddingId, onSuccess, onCancel }: AddGuestFormPro
           phone_number: newGuest.phone_number || null,
           status: newGuest.status,
           guest_count: newGuest.guest_count,
-          meal_preference: newGuest.meal_preference,
+          meal_preference,
         });
-        
+
       if (error) throw error;
-      
+
       toast({
         title: 'האורח נוסף בהצלחה',
       });
-      
+
       onSuccess();
-      
+
     } catch (error: any) {
       console.error('Error adding guest:', error);
       toast({
@@ -82,8 +95,8 @@ export function AddGuestForm({ weddingId, onSuccess, onCancel }: AddGuestFormPro
       <div className="space-y-2">
         <Label htmlFor="full-name">שם מלא</Label>
         <Input 
-          id="full-name" 
-          className="text-right" 
+          id="full-name"
+          className="text-right"
           dir="rtl"
           value={newGuest.full_name}
           onChange={(e) => setNewGuest({...newGuest, full_name: e.target.value})}
@@ -93,8 +106,8 @@ export function AddGuestForm({ weddingId, onSuccess, onCancel }: AddGuestFormPro
       <div className="space-y-2">
         <Label htmlFor="phone-number">מספר טלפון</Label>
         <Input 
-          id="phone-number" 
-          className="text-right" 
+          id="phone-number"
+          className="text-right"
           dir="rtl"
           value={newGuest.phone_number}
           onChange={handlePhoneChange}
@@ -122,7 +135,7 @@ export function AddGuestForm({ weddingId, onSuccess, onCancel }: AddGuestFormPro
         <Label htmlFor="guest-count">כמות אורחים</Label>
         <Select 
           value={newGuest.guest_count.toString()} 
-          onValueChange={(value) => setNewGuest({...newGuest, guest_count: parseInt(value)})}
+          onValueChange={handleGuestCountChange}
         >
           <SelectTrigger id="guest-count" className="text-right">
             <SelectValue placeholder="בחר כמות" />
@@ -136,23 +149,34 @@ export function AddGuestForm({ weddingId, onSuccess, onCancel }: AddGuestFormPro
           </SelectContent>
         </Select>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="meal-preference">העדפת מנה</Label>
-        <Select 
-          value={newGuest.meal_preference} 
-          onValueChange={(value) => setNewGuest({...newGuest, meal_preference: value})}
-        >
-          <SelectTrigger id="meal-preference" className="text-right">
-            <SelectValue placeholder="בחר העדפת מנה" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="רגיל">רגיל</SelectItem>
-            <SelectItem value="צמחוני">צמחוני</SelectItem>
-            <SelectItem value="טבעוני">טבעוני</SelectItem>
-            <SelectItem value="גלאט">גלאט</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+      {/* כאן מוסיפים בחירת מנת אוכל לכל אורח */}
+      {Array.from({ length: newGuest.guest_count }).map((_, idx) => (
+        <div key={idx} className="space-y-2">
+          <Label htmlFor={`meal-preference-${idx}`}>
+            {idx === 0 ? 'העדפת מנה שלך' : `העדפת מנה - אורח ${idx + 1}`}
+          </Label>
+          <Select
+            value={guestMeals[idx]}
+            onValueChange={value => {
+              setGuestMeals(prev => {
+                const arr = [...prev];
+                arr[idx] = value;
+                return arr;
+              });
+            }}
+          >
+            <SelectTrigger id={`meal-preference-${idx}`} className="text-right">
+              <SelectValue placeholder="בחר העדפת מנה" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="רגיל">רגיל</SelectItem>
+              <SelectItem value="צמחוני">צמחוני</SelectItem>
+              <SelectItem value="טבעוני">טבעוני</SelectItem>
+              <SelectItem value="גלאט">גלאט</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      ))}
       <DialogFooter className="sm:justify-end">
         <Button type="button" variant="outline" onClick={onCancel}>
           ביטול

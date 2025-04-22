@@ -112,28 +112,33 @@ const Index = () => {
               <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
             </div>
             
-            <h1 className="wedding-title mb-4 uppercase text-3xl font-bold text-[#333333]">
-              ORAN &amp; YARIN
+            {/* כותרות בעיצוב Heebo בלבד */}
+            <h1 className="mb-4 text-3xl font-bold text-[#1A1A2E] font-heebo">
+              אורן וירין
             </h1>
-            <p className="wedding-subtitle uppercase font-bold text-[#333333]">ARE GETTING MARRIED</p>
+            <p className="mb-4 text-xl font-bold text-[#1A1A2E] font-heebo">
+              מתחתנים!
+            </p>
             
             <Separator className="my-4 bg-[#D4AF7A]/30" />
             
-            <p className="wedding-subtitle mb-6 mt-4 text-[#333333]">נרגשים להזמינכם לחגוג איתנו את היום המאושר בחיינו</p>
-            <p className="mb-2 text-xl font-semibold text-[#333333]">א' בסיוון התשפ"ה</p>
-            <p className="mb-6 text-xl text-[#333333]">27.05.2025</p>
-            <p className="mb-6 text-xl text-[#333333]">{weddingDetails.venueName}, {weddingDetails.venueAddress}</p>
+            <p className="mb-6 mt-4 text-[#333333] text-lg font-heebo">
+              נרגשים להזמינכם לחגוג איתנו את היום המאושר בחיינו
+            </p>
+            <p className="mb-2 text-xl font-semibold text-[#333333] font-heebo">א' בסיוון התשפ"ה</p>
+            <p className="mb-6 text-xl text-[#333333] font-heebo">27.05.2025</p>
+            <p className="mb-6 text-xl text-[#333333] font-heebo">{weddingDetails.venueName}, {weddingDetails.venueAddress}</p>
             
-            <div className="flex flex-row justify-center gap-12 my-4">
+            <div className="flex flex-row justify-center gap-12 my-4 font-heebo">
               <div className="flex flex-col items-center justify-center text-lg">
-                <span className="text-[#333333]">קבלת פנים</span>
+                <span className="text-[#333333] font-heebo">קבלת פנים</span>
                 <Clock className="h-5 w-5 text-[#333333] mx-2 my-1" />
-                <span className="text-[#333333]">19:30</span>
+                <span className="text-[#333333] font-heebo">19:30</span>
               </div>
               <div className="flex flex-col items-center justify-center text-lg">
-                <span className="text-[#333333]">חופה וקידושין</span>
+                <span className="text-[#333333] font-heebo">חופה וקידושין</span>
                 <Heart className="h-5 w-5 text-[#333333] mx-2 my-1 bg-white/0" />
-                <span className="text-[#333333]">20:30</span>
+                <span className="text-[#333333] font-heebo">20:30</span>
               </div>
             </div>
             
@@ -152,7 +157,7 @@ const Index = () => {
         </div>
       </div>
       
-      <footer className="py-4 text-center text-white bg-black/40 backdrop-blur-sm">
+      <footer className="py-4 text-center text-white bg-black/40 backdrop-blur-sm font-heebo">
         <p className="text-sm font-heebo">
           oran &amp; yarin | {format(weddingDate, 'dd.MM.yyyy')}
         </p>
