@@ -68,9 +68,6 @@ export function GuestTableRow({ guest, onDelete, onUpdate }: GuestTableRowProps)
       if (success) {
         // Close the alert dialog on success
         setIsAlertOpen(false);
-        
-        // Trigger the update to refresh data
-        onUpdate();
       }
     } catch (error) {
       console.error('Error in handleDelete:', error);

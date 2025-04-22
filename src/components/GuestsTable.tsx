@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -82,16 +81,11 @@ export function GuestsTable({ weddingId, status, onRefresh }: GuestsTableProps) 
     }
     
     try {
-      // Pass the guest ID to the delete function
       const success = await handleDeleteGuest(guestId);
       
       if (success) {
         console.log("Delete successful, refreshing data");
         
-        // Refresh the guest list
-        fetchGuests();
-        
-        // Call the parent refresh function if provided
         if (onRefresh) {
           onRefresh();
         }

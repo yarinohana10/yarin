@@ -11,6 +11,11 @@ type GuestsManagementProps = {
 
 export const GuestsManagement = ({ weddingId, onRefresh }: GuestsManagementProps) => {
   const [currentTab, setCurrentTab] = useState<string>("all");
+  
+  const handleRefresh = () => {
+    // Call the parent refresh function to update guest stats
+    onRefresh();
+  };
 
   return (
     <Card className="shadow-md p-4">
@@ -37,7 +42,7 @@ export const GuestsManagement = ({ weddingId, onRefresh }: GuestsManagementProps
           <GuestsTable 
             weddingId={weddingId} 
             status={currentTab as any} 
-            onRefresh={onRefresh}
+            onRefresh={handleRefresh}
           />
         </TabsContent>
       </Tabs>

@@ -56,10 +56,8 @@ export const useGuests = (weddingId: string | undefined, status: string) => {
       const { error } = await supabase
         .from('guests')
         .delete()
-        .match({ 
-          id: guestId, 
-          wedding_id: weddingId 
-        });
+        .eq('id', guestId)
+        .eq('wedding_id', weddingId);
       
       if (error) {
         console.error('Supabase deletion error:', error);
