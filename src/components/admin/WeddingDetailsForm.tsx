@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -8,6 +7,13 @@ import { Separator } from '@/components/ui/separator';
 import { Calendar, Image, Loader2, Save, Banknote } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+
+interface BankTransferFields {
+  bankAccountHolder: string;
+  bankNumber: string;
+  bankBranch: string;
+  bankAccountNumber: string;
+}
 
 interface WeddingDetailsFormProps {
   weddingDetails: {
@@ -34,14 +40,110 @@ export const WeddingDetailsForm = ({ weddingDetails, onUpdate }: WeddingDetailsF
   const [imageLoading, setImageLoading] = React.useState(false);
   const [formData, setFormData] = React.useState(weddingDetails);
 
-  // Initialize formData when weddingDetails changes
+  const [bankTransfer, setBankTransfer] = React.useState<BankTransferFields>({
+    bankAccountHolder: weddingDetails.bankAccountHolder,
+    bankNumber: weddingDetails.bankNumber,
+    bankBranch: weddingDetails.bankBranch,
+    bankAccountNumber: weddingDetails.bankAccountNumber,
+  });
+  const [bankLoading, setBankLoading] = React.useState(false);
+
   React.useEffect(() => {
     setFormData(weddingDetails);
+    setBankTransfer({
+      bankAccountHolder: weddingDetails.bankAccountHolder,
+      bankNumber: weddingDetails.bankNumber,
+      bankBranch: weddingDetails.bankBranch,
+      bankAccountNumber: weddingDetails.bankAccountNumber,
+    });
+
+    const fetchBankTransfer = async () => {
+      if (!weddingDetails.id) return;
+      setBankLoading(true);
+      const { data, error } = await supabase
+        .from('bank_transfers')
+        .select('*')
+        .eq('wedding_id', weddingDetails.id)
+        .order('created_at', { ascending: false })
+        .limit(1);
+
+      if (!error && data && data.length > 0) {
+        setBankTransfer({
+          bankAccountHolder: data[0].bank_account_holder,
+          bankNumber: data[0].bank_number,
+          bankBranch: data[0].bank_branch,
+          bankAccountNumber: data[0].bank_account_number,
+        });
+      }
+      setBankLoading(false);
+    };
+    fetchBankTransfer();
   }, [weddingDetails]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleBankTransferChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setBankTransfer(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSaveBankTransfer = async () => {
+    if (!weddingDetails.id) return;
+    setBankLoading(true);
+    try {
+      const { data: existing, error: fetchError } = await supabase
+        .from('bank_transfers')
+        .select('id')
+        .eq('wedding_id', weddingDetails.id)
+        .limit(1);
+
+      if (fetchError) throw fetchError;
+      let dbRes;
+
+      if (existing && existing.length > 0) {
+        dbRes = await supabase
+          .from('bank_transfers')
+          .update({
+            ...{
+              bank_account_holder: bankTransfer.bankAccountHolder,
+              bank_number: bankTransfer.bankNumber,
+              bank_branch: bankTransfer.bankBranch,
+              bank_account_number: bankTransfer.bankAccountNumber,
+              updated_at: new Date().toISOString(),
+            }
+          })
+          .eq('wedding_id', weddingDetails.id);
+      } else {
+        dbRes = await supabase
+          .from('bank_transfers')
+          .insert([{
+            wedding_id: weddingDetails.id,
+            bank_account_holder: bankTransfer.bankAccountHolder,
+            bank_number: bankTransfer.bankNumber,
+            bank_branch: bankTransfer.bankBranch,
+            bank_account_number: bankTransfer.bankAccountNumber,
+          }]);
+      }
+
+      if (dbRes.error) throw dbRes.error;
+
+      toast({
+        title: 'הפרטים נשמרו!',
+        description: 'פרטי הבנק נשמרו בהצלחה למסד נתונים.',
+      });
+    } catch (err: any) {
+      toast({
+        title: 'שגיאה בשמירת פרטי הבנק',
+        description: err.message,
+        variant: 'destructive',
+      });
+      console.error('Bank Transfer Save Error:', err);
+    } finally {
+      setBankLoading(false);
+    }
   };
 
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +178,6 @@ export const WeddingDetailsForm = ({ weddingDetails, onUpdate }: WeddingDetailsF
           description: 'התמונה תוצג כרקע בדף הראשי',
         });
         
-        // Save the changes immediately after upload
         await onUpdate(updatedFormData);
         
       } catch (error: any) {
@@ -261,9 +362,8 @@ export const WeddingDetailsForm = ({ weddingDetails, onUpdate }: WeddingDetailsF
           <div className="space-y-1">
             <Label className="flex items-center gap-2 text-lg font-medium mb-2">
               <Banknote className="h-4 w-4" />
-              פרטי חשבון בנק להעברה
+              פרטי חשבון בנק להעברה (שמורים במסד נתונים)
             </Label>
-            
             <div className="space-y-3 pl-2 border-l-2 border-gray-200 py-2">
               <div className="space-y-2">
                 <Label htmlFor="bankAccountHolder">שם בעל החשבון</Label>
@@ -271,47 +371,66 @@ export const WeddingDetailsForm = ({ weddingDetails, onUpdate }: WeddingDetailsF
                   id="bankAccountHolder"
                   name="bankAccountHolder"
                   dir="rtl"
-                  value={formData.bankAccountHolder}
-                  onChange={handleChange}
+                  value={bankTransfer.bankAccountHolder}
+                  onChange={handleBankTransferChange}
                   placeholder="שם מלא של בעל החשבון"
+                  disabled={bankLoading}
                 />
               </div>
-              
               <div className="space-y-2">
                 <Label htmlFor="bankNumber">מספר בנק</Label>
                 <Input
                   id="bankNumber"
                   name="bankNumber"
                   dir="rtl"
-                  value={formData.bankNumber}
-                  onChange={handleChange}
+                  value={bankTransfer.bankNumber}
+                  onChange={handleBankTransferChange}
                   placeholder="מספר הבנק (לדוגמה: 12)"
+                  disabled={bankLoading}
                 />
               </div>
-              
               <div className="space-y-2">
                 <Label htmlFor="bankBranch">מספר סניף</Label>
                 <Input
                   id="bankBranch"
                   name="bankBranch"
                   dir="rtl"
-                  value={formData.bankBranch}
-                  onChange={handleChange}
+                  value={bankTransfer.bankBranch}
+                  onChange={handleBankTransferChange}
                   placeholder="מספר הסניף (לדוגמה: 645)"
+                  disabled={bankLoading}
                 />
               </div>
-              
               <div className="space-y-2">
                 <Label htmlFor="bankAccountNumber">מספר חשבון</Label>
                 <Input
                   id="bankAccountNumber"
                   name="bankAccountNumber"
                   dir="rtl"
-                  value={formData.bankAccountNumber}
-                  onChange={handleChange}
+                  value={bankTransfer.bankAccountNumber}
+                  onChange={handleBankTransferChange}
                   placeholder="מספר החשבון (לדוגמה: 321151)"
+                  disabled={bankLoading}
                 />
               </div>
+              <Button 
+                className="mt-2 w-full"
+                onClick={handleSaveBankTransfer}
+                disabled={bankLoading}
+                type="button"
+              >
+                {bankLoading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    שומר פרטי העברה...
+                  </>
+                ) : (
+                  <>
+                    <Save className="h-4 w-4 mr-2" />
+                    שמור פרטי העברה
+                  </>
+                )}
+              </Button>
             </div>
           </div>
         </div>

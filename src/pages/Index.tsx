@@ -1,4 +1,3 @@
-
 import { format } from 'date-fns';
 import { he } from 'date-fns/locale';
 import { formatInTimeZone } from 'date-fns-tz';
@@ -103,8 +102,8 @@ const Index = () => {
             <div className="flex justify-center items-center mb-6">
               <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
               <img 
-                src="/lovable-uploads/e4fbc1e4-4b39-4040-b949-bbf0d6692f2f.png" 
-                alt="O & Y Monogram" 
+                src="/lovable-uploads/2d9890af-82c2-4897-aa48-062412900113.png"
+                alt="Wedding main theme" 
                 className="mx-4 h-16 w-16 object-contain"
               />
               <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>

@@ -9,6 +9,47 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      bank_transfers: {
+        Row: {
+          bank_account_holder: string
+          bank_account_number: string
+          bank_branch: string
+          bank_number: string
+          created_at: string
+          id: string
+          updated_at: string
+          wedding_id: string
+        }
+        Insert: {
+          bank_account_holder: string
+          bank_account_number: string
+          bank_branch: string
+          bank_number: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          wedding_id: string
+        }
+        Update: {
+          bank_account_holder?: string
+          bank_account_number?: string
+          bank_branch?: string
+          bank_number?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          wedding_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bank_transfers_wedding_id_fkey"
+            columns: ["wedding_id"]
+            isOneToOne: false
+            referencedRelation: "wedding_events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       guests: {
         Row: {
           created_at: string
