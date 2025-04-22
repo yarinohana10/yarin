@@ -53,7 +53,7 @@ export const useGuests = (weddingId: string | undefined, status: string) => {
       console.log('Deleting guest:', guestId, 'from wedding ID:', weddingId);
       
       // Execute the delete operation with explicit wedding_id check
-      const { error } = await supabase
+      const { error, data } = await supabase
         .from('guests')
         .delete()
         .eq('id', guestId)

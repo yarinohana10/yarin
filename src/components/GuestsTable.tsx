@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -81,13 +82,17 @@ export function GuestsTable({ weddingId, status, onRefresh }: GuestsTableProps) 
     }
     
     try {
+      // קריאה לפונקצית המחיקה מהוק useGuests
       const success = await handleDeleteGuest(guestId);
       
       if (success) {
         console.log("Delete successful, refreshing data");
         
+        // פעולות רענון אחרי מחיקה מוצלחת
+        fetchGuests(); // רענון רשימת האורחים
+        
         if (onRefresh) {
-          onRefresh();
+          onRefresh(); // רענון הסטטיסטיקות ברמת האפליקציה
         }
         
         return true;
