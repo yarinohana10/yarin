@@ -101,21 +101,21 @@ const Index = () => {
         <div className="max-w-3xl w-full space-y-8">
           <div className="wedding-card p-8 md:p-10 text-center animate-fadeIn bg-white/90 backdrop-blur-sm rounded-lg shadow-lg">
             <div className="flex justify-center items-center mb-6">
-              <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
+              <div className="h-px bg-[hsl(0,0%,78%)] flex-1 max-w-[100px]"></div>
               <img 
                 src="/lovable-uploads/994e3256-15d1-42d2-bdb8-1d09b9cc4927.png"
                 alt="Wedding logo" 
                 className="mx-4 h-18 w-18 object-contain"
                 style={{ height: "68px", width: "68px" }}
               />
-              <div className="h-px bg-[#D4AF7A] flex-1 max-w-[100px]"></div>
+              <div className="h-px bg-[hsl(0,0%,78%)] flex-1 max-w-[100px]"></div>
             </div>
             
             <h1 className="mb-4 text-3xl font-bold text-[#1A1A2E] font-heebo">
               ORAN & YARIN
             </h1>
             <p className="mb-4 text-xl font-bold text-[#1A1A2E] font-heebo">
-              ARE GETTING MARRIED!
+              ARE GETTING MARRIED
             </p>
             
             <Separator className="my-4 bg-[#D4AF7A]/30" />

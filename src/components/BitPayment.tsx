@@ -67,8 +67,8 @@ export const BitPayment = () => {
   return (
     <div className="p-8 text-center">
       <div className="space-y-4">
-        <h3 className="text-2xl font-semibold text-[#1A1A2E]">שלחו מתנה לזוג</h3>
-        <p className="text-[#1A1A2E]/80">ניתן לשלוח מתנה באמצעות אפליקציית ביט או פייבוקס</p>
+        <h3 className="text-xl font-semibold text-[#1A1A2E]">לנוחיותכם, ניתן להעניק מתנות באפליקציית ביט, פייבוקס או העברה בנקאית</h3>
+        {/* <p className="text-[#1A1A2E]/80">ניתן לשלוח מתנה באמצעות אפליקציית ביט או פייבוקס</p> */}
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
           {bitLink && (

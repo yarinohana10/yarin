@@ -64,7 +64,6 @@ export const useGuests = (weddingId: string | undefined, status: string) => {
         throw error;
       }
       
-      console.log('Guest deleted successfully from the database');
       
       // Update local state after successful deletion
       setGuests(prev => prev.filter(guest => guest.id !== guestId));
