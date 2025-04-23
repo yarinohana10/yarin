@@ -115,7 +115,7 @@ const Index = () => {
               ORAN & YARIN
             </h1>
             <p className="mb-4 text-xl font-bold text-[#1A1A2E] font-heebo">
-              ARE GETTING MARRIED!
+              ARE GETTING MARRIED
             </p>
             
             <Separator className="my-4 bg-[#D4AF7A]/30" />

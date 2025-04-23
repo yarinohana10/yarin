@@ -50,22 +50,21 @@ export const useGuests = (weddingId: string | undefined, status: string) => {
         throw new Error('Missing required parameters: weddingId or guestId');
       }
       
-      console.log('Deleting guest:', guestId, 'from wedding ID:', weddingId);
       
       // Execute the delete operation with explicit wedding_id check
       const { error, data } = await supabase
-        .from('guests')
-        .delete()
-        .eq('id', guestId)
-        .eq('wedding_id', weddingId);
-      
+      .from('guests')
+      .delete()
+      .eq('id', guestId)
+      .eq('wedding_id', weddingId);
+ 
       if (error) {
         console.error('Supabase deletion error:', error);
         throw error;
       }
-      
-      console.log('Guest deleted successfully from the database');
-      
+
+
+    
       // Update local state after successful deletion
       setGuests(prev => prev.filter(guest => guest.id !== guestId));
       
