@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds } from 'date-fns';
 import { Card, CardContent } from '@/components/ui/card';
@@ -53,12 +52,12 @@ export const Countdown = () => {
   ];
 
   return (
-    <div className="flex flex-nowrap justify-center gap-2 mb-8 mt-4 overflow-x-auto px-2">
+    <div className="flex flex-nowrap justify-center gap-1 sm:gap-2 md:gap-4 mb-6 sm:mb-8 mt-2 sm:mt-4 overflow-x-auto px-1 sm:px-2">
       {timeUnits.map((unit) => (
-        <Card key={unit.label} className="w-20 bg-white/90 shadow-md flex-shrink-0">
-          <CardContent className="p-3 text-center">
-            <div className="text-2xl font-bold text-[#D4AF7A]">{unit.value}</div>
-            <div className="text-xs text-gray-600">{unit.label}</div>
+        <Card key={unit.label} className="w-16 sm:w-20 md:w-24 bg-white/90 shadow-md flex-shrink-0 transition-all duration-300">
+          <CardContent className="p-2 md:p-3 text-center">
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#D4AF7A]">{unit.value}</div>
+            <div className="text-[10px] sm:text-xs md:text-sm text-gray-600">{unit.label}</div>
           </CardContent>
         </Card>
       ))}

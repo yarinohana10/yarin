@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { CreditCard, Banknote } from 'lucide-react';
 import { useWeddingStore } from '@/lib/store';
@@ -65,20 +64,19 @@ export const BitPayment = () => {
     : null;
   
   return (
-    <div className="p-8 text-center">
-      <div className="space-y-4">
-        <h3 className="text-xl font-semibold text-[#1A1A2E]">לנוחיותכם, ניתן להעניק מתנות באפליקציית ביט, פייבוקס או העברה בנקאית</h3>
-        {/* <p className="text-[#1A1A2E]/80">ניתן לשלוח מתנה באמצעות אפליקציית ביט או פייבוקס</p> */}
+    <div className="p-4 sm:p-6 md:p-8 text-center">
+      <div className="space-y-3 sm:space-y-4">
+        <h3 className="text-lg sm:text-xl font-semibold text-[#1A1A2E]">לנוחיותכם, ניתן להעניק מתנות באפליקציית ביט, פייבוקס או העברה בנקאית</h3>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-3 sm:mb-4">
           {bitLink && (
             <a 
               href={bitLink}
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#F0B6BC] to-[#FFD1DC] text-[#1A1A2E] rounded-xl hover:opacity-90 transition-all duration-300 shadow-md"
+              className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#F0B6BC] to-[#FFD1DC] text-[#1A1A2E] rounded-xl hover:opacity-90 transition-all duration-300 shadow-md text-sm sm:text-base w-full sm:w-auto"
             >
-              <CreditCard className="mr-2 h-5 w-5" />
+              <CreditCard className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               שליחת מתנה ב-Bit
             </a>
           )}
@@ -88,18 +86,18 @@ export const BitPayment = () => {
               href={payboxLink}
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#4CAF50] to-[#81C784] text-white rounded-xl hover:opacity-90 transition-all duration-300 shadow-md"
+              className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#4CAF50] to-[#81C784] text-white rounded-xl hover:opacity-90 transition-all duration-300 shadow-md text-sm sm:text-base w-full sm:w-auto"
             >
-              <CreditCard className="mr-2 h-5 w-5" />
+              <CreditCard className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               שליחת מתנה ב-Paybox
             </a>
           )}
         </div>
         
         {bankDetails.bankNumber && !loading && (
-          <div className="bg-white/95 border border-gray-200 rounded-xl p-4 max-w-md mx-auto">
-            <h4 className="text-xl font-semibold mb-3 text-[#1A1A2E]">העברה בנקאית</h4>
-            <div className="space-y-2 text-[#1A1A2E]/80">
+          <div className="bg-white/95 border border-gray-200 rounded-xl p-3 sm:p-4 max-w-md mx-auto">
+            <h4 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-[#1A1A2E]">העברה בנקאית</h4>
+            <div className="space-y-1 sm:space-y-2 text-[#1A1A2E]/80 text-sm sm:text-base">
               <div className="flex justify-between">
                 <span>שם בעל החשבון:</span>
                 <span>{bankDetails.bankAccountHolder}</span>

@@ -266,26 +266,28 @@ export const RSVPButtons = () => {
   if (showPhoneLookup) {
     return (
       <Card className="w-full shadow-lg animate-fade-in">
-        <CardContent className="pt-6">
-          <div className="flex justify-between items-center mb-4">
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="text-gray-500 hover:text-gray-700"
-              onClick={handleBack}
-            >
-              <ArrowLeft className="h-4 w-4 ml-1" />
-              חזרה לדף הראשי
-            </Button>
-            <h3 className="text-lg font-semibold text-center">עדכון אישור הגעה</h3>
+        <CardContent className="pt-4 sm:pt-6">
+          <div className="mb-3 sm:mb-4">
+            <div className="flex justify-end mb-2">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm"
+                onClick={handleBack}
+              >
+                <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4 ml-1" />
+                חזרה לדף הראשי
+              </Button>
+            </div>
+            <h3 className="text-base sm:text-lg font-semibold text-center">עדכון אישור הגעה</h3>
           </div>
           
-          <div className="space-y-4">
-            <div className="space-y-2 text-right">
-              <Label htmlFor="lookup-phone" className="flex items-center justify-end gap-2">
-                <span>מספר טלפון</span>
-                <Phone className="h-4 w-4" />
-              </Label>
+          <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-1 sm:space-y-2 text-right">
+              <div dir="rtl" className="flex items-center gap-1 sm:gap-2">
+                <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="text-sm sm:text-base">מספר טלפון</span>
+              </div>
               <Input
                 dir="rtl"
                 id="lookup-phone"
@@ -298,23 +300,24 @@ export const RSVPButtons = () => {
                     setLookupPhone(value);
                   }
                 }}
-                className="text-right"
+                className="text-right text-sm sm:text-base rtl"
                 maxLength={10}
                 autoFocus
+                style={{ textAlign: 'right', direction: 'rtl' }}
               />
             </div>
             
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-2 sm:gap-4 pt-3 sm:pt-4">
               <Button
-                className="flex-1 py-6"
+                className="flex-1 py-3 sm:py-6 text-sm sm:text-base"
                 onClick={handleLookupByPhone}
               >
-                <RefreshCw className="mr-2 h-5 w-5" />
+                <RefreshCw className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 חפש פרטים
               </Button>
               
               <Button 
-                className="flex-1 py-6 bg-gray-300 text-gray-700 hover:bg-gray-400"
+                className="flex-1 py-3 sm:py-6 bg-gray-300 text-gray-700 hover:bg-gray-400 text-sm sm:text-base"
                 onClick={handleBack}
               >
                 ביטול
@@ -331,7 +334,7 @@ export const RSVPButtons = () => {
       {!showForm ? (
         <div className="space-y-3">
           <Button 
-            className="w-full text-lg py-6 bg-wedding-gradient hover:opacity-90 shadow-md animate-pulse-gentle"
+            className="w-full text-base sm:text-lg py-4 sm:py-6 bg-wedding-gradient hover:opacity-90 shadow-md animate-pulse-gentle"
             onClick={() => {
               setIsUpdateMode(false);
               setShowForm(true);
@@ -341,57 +344,62 @@ export const RSVPButtons = () => {
             לאישור הגעה לחץ כאן
           </Button>
           
-          <Button 
-            variant="outline"
-            className="w-full text-md border-[#F0B6BC] text-[#1A1A2E] hover:bg-[#F0B6BC]/10"
-            onClick={() => {
-              setIsUpdateMode(true);
-              setShowPhoneLookup(true);
-              setShowForm(false);
-            }}
-          >
-            <RefreshCw className="mr-2 h-4 w-4" />
-            אישרת כבר הגעה? לחץ כאן לעדכון
-          </Button>
+          <div className="flex justify-end items-center">
+            <Button 
+              variant="outline"
+              className="w-full text-sm sm:text-md border-[#F0B6BC] text-[#1A1A2E] hover:bg-[#F0B6BC]/10"
+              onClick={() => {
+                setIsUpdateMode(true);
+                setShowPhoneLookup(true);
+                setShowForm(false);
+              }}
+            >
+              <div dir="rtl" className="flex items-center gap-1 sm:gap-2 w-full">
+                <RefreshCw className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span>אישרת כבר הגעה? לחץ כאן לעדכון</span>
+              </div>
+            </Button>
+          </div>
         </div>
       ) : (
         <Card className="w-full shadow-lg animate-fade-in">
-          <CardContent className="pt-6">
-            <div className="flex justify-between items-center mb-4">
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="text-gray-500 hover:text-gray-700"
-                onClick={handleBack}
-              >
-                <ArrowLeft className="h-4 w-4 ml-1" />
-                חזרה לדף הראשי
-              </Button>
-              <h3 className="text-lg font-semibold">אישור הגעה</h3>
+          <CardContent className="pt-4 sm:pt-6">
+            <div className="mb-3 sm:mb-4">
+              <div className="flex justify-end mb-2">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm"
+                  onClick={handleBack}
+                >
+                  <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4 ml-1" />
+                  חזרה לדף הראשי
+                </Button>
+              </div>
+              <h3 className="text-base sm:text-lg font-semibold text-center">אישור הגעה</h3>
             </div>
             
             <div className="space-y-4">
-              <div className="space-y-2 text-right">
-                <Label htmlFor="guest-name">שם האורח/ת</Label>
+              <div className="space-y-1 sm:space-y-2 text-right">
+                <Label htmlFor="guest-name" className="text-sm sm:text-base">שם האורח/ת</Label>
                 <Input
                   dir="rtl"
                   id="guest-name"
                   placeholder="הזן את שמך המלא"
                   value={guestName}
                   onChange={(e) => setGuestName(e.target.value)}
-                  className="text-right"
+                  className="text-right text-sm sm:text-base rtl"
                   autoFocus
                   disabled={isUpdateMode}
+                  style={{ textAlign: 'right', direction: 'rtl' }}
                 />
               </div>
               
-              <div className="space-y-2 text-right">
-                <Label htmlFor="phone-number" className="inline-block w-full text-right">
-                  <span className="flex items-center justify-end gap-2">
-                    <span>מספר טלפון</span>
-                    <Phone className="h-4 w-4" />
-                  </span>
-                </Label>
+              <div className="space-y-1 sm:space-y-2 text-right">
+                <div dir="rtl" className="flex items-center gap-1 sm:gap-2">
+                  <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="text-sm sm:text-base">מספר טלפון</span>
+                </div>
                 <Input
                   dir="rtl"
                   id="phone-number"
@@ -404,15 +412,16 @@ export const RSVPButtons = () => {
                       setPhoneNumber(value);
                     }
                   }}
-                  className="text-right"
+                  className="text-right text-sm sm:text-base rtl"
                   maxLength={10}
                   disabled={isUpdateMode}
+                  style={{ textAlign: 'right', direction: 'rtl' }}
                 />
-                <p className="text-xs text-gray-500 text-right">*נדרש 10 ספרות</p>
+                <p className="text-[10px] sm:text-xs text-gray-500 text-right">*נדרש 10 ספרות</p>
               </div>
               
-              <div className="space-y-2 text-right">
-                <Label htmlFor="guest-count">כמות אורחים</Label>
+              <div className="space-y-1 sm:space-y-2 text-right">
+                <Label htmlFor="guest-count" className="text-sm sm:text-base">כמות אורחים</Label>
                 <Select
                   value={guestCount}
                   onValueChange={(value) => {
@@ -431,23 +440,23 @@ export const RSVPButtons = () => {
                     });
                   }}
                 >
-                  <SelectTrigger id="guest-count" className="text-right">
+                  <SelectTrigger id="guest-count" className="text-right text-sm sm:text-base">
                     <SelectValue placeholder="בחר כמות אורחים" />
                   </SelectTrigger>
                   <SelectContent>
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((num) => (
-                      <SelectItem key={num} value={num.toString()}>
+                      <SelectItem key={num} value={num.toString()} className="text-sm sm:text-base">
                         {num}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-                <p className="text-xs text-gray-500 text-right">*כולל אותך</p>
+                <p className="text-[10px] sm:text-xs text-gray-500 text-right">*כולל אותך</p>
               </div>
               
               {Array.from({ length: parseInt(guestCount) }).map((_, index) => (
-                <div key={index} className="space-y-2 text-right border-t pt-2 border-dashed border-gray-200 first:border-0 first:pt-0">
-                  <Label htmlFor={`meal-preference-${index}`}>
+                <div key={index} className="space-y-1 sm:space-y-2 text-right border-t pt-2 border-dashed border-gray-200 first:border-0 first:pt-0">
+                  <Label htmlFor={`meal-preference-${index}`} className="text-sm sm:text-base">
                     {index === 0 ? 'העדפת מנה שלך' : `העדפת מנה - אורח ${index + 1}`}
                   </Label>
                   <Select
@@ -460,50 +469,50 @@ export const RSVPButtons = () => {
                       });
                     }}
                   >
-                    <SelectTrigger id={`meal-preference-${index}`} className="text-right">
+                    <SelectTrigger id={`meal-preference-${index}`} className="text-right text-sm sm:text-base">
                       <SelectValue placeholder="בחר העדפת מנה" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="רגיל">רגיל</SelectItem>
-                      <SelectItem value="צמחוני">צמחוני</SelectItem>
-                      <SelectItem value="טבעוני">טבעוני</SelectItem>
-                      <SelectItem value="גלאט">גלאט</SelectItem>
+                      <SelectItem value="רגיל" className="text-sm sm:text-base">רגיל</SelectItem>
+                      <SelectItem value="צמחוני" className="text-sm sm:text-base">צמחוני</SelectItem>
+                      <SelectItem value="טבעוני" className="text-sm sm:text-base">טבעוני</SelectItem>
+                      <SelectItem value="גלאט" className="text-sm sm:text-base">גלאט</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               ))}
               
-              <div className="pt-4 text-center">
-                <p className="mb-3 font-medium text-lg">האם תוכל/י להגיע לאירוע?</p>
-                <div className="grid grid-cols-3 gap-4">
+              <div className="pt-3 sm:pt-4 text-center">
+                <p className="mb-2 sm:mb-3 font-medium text-base sm:text-lg">האם תוכל/י להגיע לאירוע?</p>
+                <div className="grid grid-cols-3 gap-2 sm:gap-4">
                   <Button
-                    className="py-6 text-white hover:bg-[#F0B6BC] shadow-md transition-all"
-                    style={{ backgroundColor: '#F0B6BC' }}
+                    className="py-2 xs:py-3 sm:py-6 text-white hover:bg-green-500 shadow-md transition-all text-xs sm:text-sm h-auto min-h-9 sm:min-h-12"
+                    style={{ backgroundColor: '#22c55e' }}
                     onClick={() => handleRSVP('attending')}
                     disabled={submitting}
                   >
-                    <ThumbsUp className="mr-2 h-5 w-5" />
-                    {submitting ? 'מעבד...' : 'מגיע/ה'}
+                    <ThumbsUp className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                    {submitting ? 'מעבד...' : <span className="text-[10px] xs:text-xs sm:text-sm whitespace-nowrap">מגיע/ה</span>}
                   </Button>
                   
                   <Button 
-                    className="py-6 text-white hover:bg-yellow-500 shadow-md transition-all"
+                    className="py-2 xs:py-3 sm:py-6 text-white hover:bg-yellow-500 shadow-md transition-all text-xs sm:text-sm h-auto min-h-9 sm:min-h-12"
                     style={{ backgroundColor: '#f0b95a' }}
                     onClick={() => handleRSVP('maybe')}
                     disabled={submitting}
                   >
-                    <HelpCircle className="mr-2 h-5 w-5" />
-                    {submitting ? 'מעבד...' : 'אולי'}
+                    <HelpCircle className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                    {submitting ? 'מעבד...' : <span className="text-[10px] xs:text-xs sm:text-sm whitespace-nowrap">אולי</span>}
                   </Button>
                   
                   <Button 
-                    className="py-6 text-white hover:bg-gray-500 shadow-md transition-all"
-                    style={{ backgroundColor: '#8E9196' }}
+                    className="py-2 xs:py-3 sm:py-6 text-white hover:bg-red-600 shadow-md transition-all text-xs sm:text-sm h-auto min-h-9 sm:min-h-12"
+                    style={{ backgroundColor: '#ef4444' }}
                     onClick={() => handleRSVP('declined')}
                     disabled={submitting}
                   >
-                    <ThumbsDown className="mr-2 h-5 w-5" />
-                    {submitting ? 'מעבד...' : 'לא מגיע/ה'}
+                    <ThumbsDown className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                    {submitting ? 'מעבד...' : <span className="text-[10px] xs:text-xs sm:text-sm whitespace-nowrap">לא מגיע/ה</span>}
                   </Button>
                 </div>
               </div>
