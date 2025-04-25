@@ -345,7 +345,7 @@ export const RSVPButtons = () => {
           </Button>
           
           <div className="flex justify-end items-center">
-            <Button 
+            <Button
               variant="outline"
               className="w-full text-sm sm:text-md border-[#F0B6BC] text-[#1A1A2E] hover:bg-[#F0B6BC]/10"
               onClick={() => {
@@ -354,7 +354,7 @@ export const RSVPButtons = () => {
                 setShowForm(false);
               }}
             >
-              <div dir="rtl" className="flex items-center gap-1 sm:gap-2 w-full">
+              <div dir="rtl" className="flex items-center justify-center gap-1 sm:gap-2 w-full">
                 <RefreshCw className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span>אישרת כבר הגעה? לחץ כאן לעדכון</span>
               </div>
