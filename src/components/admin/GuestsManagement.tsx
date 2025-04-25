@@ -24,62 +24,62 @@ export const GuestsManagement = ({ weddingId, onRefresh }: GuestsManagementProps
     onRefresh();
   };
 
-  const handleExportToExcel = async () => {
-    if (isExporting) return;
+  // const handleExportToExcel = async () => {
+  //   if (isExporting) return;
     
-    try {
-      setIsExporting(true);
+  //   try {
+  //     setIsExporting(true);
       
-      // Fetch all guests for the wedding
-      const { data, error } = await supabase
-        .from('guests')
-        .select('*')
-        .eq('wedding_id', weddingId);
+  //     // Fetch all guests for the wedding
+  //     const { data, error } = await supabase
+  //       .from('guests')
+  //       .select('*')
+  //       .eq('wedding_id', weddingId);
         
-      if (error) throw error;
+  //     if (error) throw error;
       
-      if (!data || data.length === 0) {
-        toast({
-          title: 'אין נתונים לייצוא',
-          description: 'רשימת האורחים ריקה',
-          variant: 'destructive',
-        });
-        return;
-      }
+  //     if (!data || data.length === 0) {
+  //       toast({
+  //         title: 'אין נתונים לייצוא',
+  //         description: 'רשימת האורחים ריקה',
+  //         variant: 'destructive',
+  //       });
+  //       return;
+  //     }
       
-      // Transform data for Excel
-      const worksheet = XLSX.utils.json_to_sheet(
-        data.map(guest => ({
-          'שם מלא': guest.full_name,
-          'טלפון': guest.phone_number || '',
-          'סטטוס': translateStatus(guest.status),
-          'כמות אורחים': guest.guest_count,
-          'העדפת מנה': guest.meal_preference || 'רגיל',
-        }))
-      );
+  //     // Transform data for Excel
+  //     const worksheet = XLSX.utils.json_to_sheet(
+  //       data.map(guest => ({
+  //         'שם מלא': guest.full_name,
+  //         'טלפון': guest.phone_number || '',
+  //         'סטטוס': translateStatus(guest.status),
+  //         'כמות אורחים': guest.guest_count,
+  //         'העדפת מנה': guest.meal_preference || 'רגיל',
+  //       }))
+  //     );
       
-      // Create workbook and append sheet
-      const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, 'אורחים');
+  //     // Create workbook and append sheet
+  //     const workbook = XLSX.utils.book_new();
+  //     XLSX.utils.book_append_sheet(workbook, worksheet, 'אורחים');
       
-      // Generate Excel file
-      XLSX.writeFile(workbook, 'אורחים.xlsx');
+  //     // Generate Excel file
+  //     XLSX.writeFile(workbook, 'אורחים.xlsx');
       
-      toast({
-        title: 'הקובץ יוצא בהצלחה',
-        description: 'אורחים.xlsx נשמר בהצלחה',
-      });
-    } catch (error: any) {
-      console.error('Error exporting to Excel:', error);
-      toast({
-        title: 'שגיאה בייצוא הנתונים',
-        description: error.message,
-        variant: 'destructive',
-      });
-    } finally {
-      setIsExporting(false);
-    }
-  };
+  //     toast({
+  //       title: 'הקובץ יוצא בהצלחה',
+  //       description: 'אורחים.xlsx נשמר בהצלחה',
+  //     });
+  //   } catch (error: any) {
+  //     console.error('Error exporting to Excel:', error);
+  //     toast({
+  //       title: 'שגיאה בייצוא הנתונים',
+  //       description: error.message,
+  //       variant: 'destructive',
+  //     });
+  //   } finally {
+  //     setIsExporting(false);
+  //   }
+  // };
   
   const translateStatus = (status: string) => {
     switch (status) {
@@ -93,18 +93,18 @@ export const GuestsManagement = ({ weddingId, onRefresh }: GuestsManagementProps
 
   return (
     <Card className="shadow-md p-4">
-      <div className="flex justify-between mb-4">
+      {/* <div className="flex justify-between mb-4">
         <h2 className="text-xl font-semibold">ניהול אורחים</h2>
         <Button 
           variant="outline" 
           className="flex gap-2"
-          onClick={handleExportToExcel}
+          // onClick={handleExportToExcel}
           disabled={isExporting}
         >
           <FileSpreadsheet className="h-4 w-4" />
           {isExporting ? 'מייצא...' : 'ייצוא לאקסל'}
         </Button>
-      </div>
+      </div> */}
       
       <Tabs defaultValue="all" value={currentTab} onValueChange={setCurrentTab}>
         <TabsList className="grid w-full grid-cols-5 mb-6 mx-auto max-w-2xl">
