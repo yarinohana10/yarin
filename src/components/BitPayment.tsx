@@ -66,7 +66,7 @@ export const BitPayment = () => {
   return (
     <div className="p-4 sm:p-6 md:p-8 text-center">
       <div className="space-y-3 sm:space-y-4">
-        <h3 className="text-lg sm:text-xl font-semibold text-[#1A1A2E]">לנוחיותכם, ניתן להעניק מתנות באפליקציית ביט, פייבוקס או העברה בנקאית</h3>
+        <h3 className="text-lg sm:text-xl font-semibold text-[#1A1A2E]">לנוחיותכם, ניתן להעניק מתנות באפליקציית ביט או פייבוקס </h3>
         
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-3 sm:mb-4">
           {bitLink && (
@@ -93,8 +93,8 @@ export const BitPayment = () => {
             </a>
           )}
         </div>
-        
-        {bankDetails.bankNumber && !loading && (
+        {/* For bank transfer  */}
+        {/* {bankDetails.bankNumber && !loading && (
           <div className="bg-white/95 border border-gray-200 rounded-xl p-3 sm:p-4 max-w-md mx-auto">
             <h4 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-[#1A1A2E]">העברה בנקאית</h4>
             <div className="space-y-1 sm:space-y-2 text-[#1A1A2E]/80 text-sm sm:text-base">
@@ -116,7 +116,7 @@ export const BitPayment = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

@@ -34,19 +34,24 @@ export const MapLinks = () => {
 
   const venueName = "אולמי דוריה, חמי יואב";
 
+
   const createGoogleMapsUrl = () => {
     if (userLocation) {
-      return `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${venueCoordinates.lat},${venueCoordinates.lng}&destination_place_id=ChIJOQHGGOE7HRURKhA4CxRtsTg`;
+      return `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${encodeURIComponent(venueName)}`;
     } else {
-      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venueName)}&query=${venueCoordinates.lat},${venueCoordinates.lng}`;
+      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venueName)}`;
     }
   };
 
+
+
   const createWazeUrl = () => {
-    return `https://waze.com/ul?ll=${venueCoordinates.lat},${venueCoordinates.lng}&navigate=yes&z=10&q=${encodeURIComponent(venueName)}`;
+    return `https://waze.com/ul/hsv8sj2f2d`;
   };
 
-  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(venueName)}&center=${venueCoordinates.lat},${venueCoordinates.lng}&zoom=12`;
+
+  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(venueName)}&zoom=15`;
+
 
   return (
     <div className="max-w-md mx-auto w-full">
@@ -58,31 +63,31 @@ export const MapLinks = () => {
                 <p className="text-sm sm:text-base">{locationError}</p>
               </div>
             ) : (
-              <iframe 
+              <iframe
                 title="מפת האולם"
                 src={mapSrc}
-                width="100%" 
-                height="100%" 
-                style={{ border: 0, minHeight: "180px" }} 
-                allowFullScreen 
-                loading="lazy" 
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: "180px" }}
+                allowFullScreen
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="w-full h-full object-cover"
               />
             )}
           </div>
-          
+
           <div className="absolute top-3 sm:top-4 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-md p-2 sm:p-3 min-w-48 sm:min-w-60 text-center">
             <p className="font-semibold text-gray-700 mb-0 sm:mb-1 text-sm sm:text-base">אולמי דוריה, חמי יואב</p>
             <p className="text-blue-500 text-xs sm:text-sm">הצג מפה גדולה יותר</p>
           </div>
         </div>
-        
+
         <div className="flex flex-col">
-          <a 
-            href={createWazeUrl()} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href={createWazeUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#e4c28d] text-center py-2 sm:py-3 flex items-center justify-center hover:opacity-90 transition-opacity text-sm sm:text-base"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-1 sm:mr-2" viewBox="0 0 24 24" fill="currentColor">
@@ -90,11 +95,11 @@ export const MapLinks = () => {
             </svg>
             ניווט עם Waze
           </a>
-          
-          <a 
-            href={createGoogleMapsUrl()} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+
+          <a
+            href={createGoogleMapsUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#e4c28d] text-center py-2 sm:py-3 border-t border-[#d4b37d] flex items-center justify-center hover:opacity-90 transition-opacity text-sm sm:text-base"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-1 sm:mr-2" viewBox="0 0 24 24" fill="currentColor">
@@ -103,11 +108,11 @@ export const MapLinks = () => {
             </svg>
             ניווט עם Google Maps
           </a>
-          
+
           <div className="bg-[#e4c28d] text-center py-2 sm:py-3 border-t border-[#d4b37d] flex items-center justify-center hover:opacity-90 transition-opacity rounded-b-lg">
-            <a 
-              href={formatGoogleCalendarUrl()} 
-              target="_blank" 
+            <a
+              href={formatGoogleCalendarUrl()}
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-full text-sm sm:text-base"
             >

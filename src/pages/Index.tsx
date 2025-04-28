@@ -35,8 +35,8 @@ const Index = () => {
             id: weddingData.id,
             coupleNames: weddingData.couple_names,
             weddingDate: weddingData.wedding_date,
-            venueName: weddingData.venue_name,
-            venueAddress: weddingData.venue_address,
+            venueName: weddingData.venue_address,
+            venueAddress: weddingData.venue_name,
             venueMapLink: weddingData.venue_map_link || '',
             wazeLink: weddingData.waze_link || '',
             bitNumber: weddingData.bit_number || '',
@@ -111,7 +111,7 @@ const Index = () => {
               <div className="h-px bg-[hsl(0,0%,78%)] flex-1 max-w-[100px]"></div>
             </div>
             
-            <h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A2E] font-heebo">
+            <h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A2E] " style={{fontFamily: 'oswald'}}>
               ORAN & YARIN
             </h1>
             <p className="mb-4 text-lg md:text-xl font-bold text-[#1A1A2E] font-heebo">
@@ -124,7 +124,9 @@ const Index = () => {
               נרגשים להזמינכם לחגוג איתנו את היום המאושר בחיינו
             </p>
             <p className="mb-2 text-lg md:text-xl font-semibold text-[#333333] font-heebo">א' בסיוון התשפ"ה</p>
-            <p className="mb-6 text-lg md:text-xl text-[#333333] font-heebo">27.05.2025</p>
+            <p className="mb-6 text-lg md:text-xl text-[#333333] font-heebo ">
+              <span className='font-bold'>27.05.2025</span>
+              </p>
             <p className="mb-6 text-lg md:text-xl text-[#333333] font-heebo">{weddingDetails.venueName}, {weddingDetails.venueAddress}</p>
             
             <div className="flex flex-row justify-center gap-6 md:gap-12 my-4 font-heebo">

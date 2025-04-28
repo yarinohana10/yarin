@@ -45,7 +45,7 @@ export const useWeddingStore = create<WeddingStore>()(
         venueName: 'אולמי דוריה',
         venueAddress: 'חמי יואב',
         venueMapLink: 'https://maps.app.goo.gl/bCwkYKKQqU2JM8PV6',
-        wazeLink: 'https://waze.com/ul?ll=31.6309,34.7880&navigate=yes&q=אולמי+דוריה,+חמי+יואב',
+        wazeLink: ' https://waze.com/ul/hsv8sj2f2d',
         bitNumber: '',
         bankNumber: '',
         bankBranch: '',
