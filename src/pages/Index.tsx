@@ -17,7 +17,7 @@ import { supabase } from '@/integrations/supabase/client';
 const Index = () => {
   const { weddingDetails, updateWeddingDetails } = useWeddingStore();
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     const fetchWeddingDetails = async () => {
       try {
@@ -26,9 +26,9 @@ const Index = () => {
           .select('*')
           .order('created_at', { ascending: false })
           .limit(1);
-        
+
         if (error) throw error;
-        
+
         if (data && data.length > 0) {
           const weddingData = data[0];
           updateWeddingDetails({
@@ -53,18 +53,18 @@ const Index = () => {
         setLoading(false);
       }
     };
-    
+
     fetchWeddingDetails();
   }, [updateWeddingDetails]);
-  
+
   const weddingDate = new Date(weddingDetails.weddingDate);
   const formattedDate = formatInTimeZone(
     weddingDate,
     'Asia/Jerusalem',
-    "EEEE, d בMMMM yyyy", 
+    "EEEE, d בMMMM yyyy",
     { locale: he }
   );
-  
+
   const backgroundStyle = {
     backgroundImage: weddingDetails.backgroundImage
       ? `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(${weddingDetails.backgroundImage})`
@@ -83,12 +83,12 @@ const Index = () => {
   }
 
   return (
-    <div 
-      className="min-h-screen flex flex-col bg-[#F9F5F2] font-heebo" 
+    <div
+      className="min-h-screen flex flex-col bg-[#F9F5F2] font-heebo"
       style={backgroundStyle}
     >
       <Confetti />
-      
+
       <div className="absolute top-6 left-6 z-10">
         <Link to="/admin">
           <Button variant="outline" size="icon" className="bg-white/90 hover:bg-white backdrop-blur-sm">
@@ -96,39 +96,42 @@ const Index = () => {
           </Button>
         </Link>
       </div>
-      
+
       <div className="flex-1 container mx-auto px-4 py-8 md:py-12 flex flex-col items-center justify-center">
         <div className="max-w-3xl w-full space-y-6 md:space-y-8">
           <div className="wedding-card p-6 md:p-8 lg:p-10 text-center animate-fadeIn bg-white/90 backdrop-blur-sm rounded-lg shadow-lg">
+            <div className="absolute top-4 right-4 text-sm text-right">
+              בס"ד
+            </div>
             <div className="flex justify-center items-center mb-6">
               <div className="h-px bg-[hsl(0,0%,78%)] flex-1 max-w-[100px]"></div>
-              <img 
+              <img
                 src="/lovable-uploads/994e3256-15d1-42d2-bdb8-1d09b9cc4927.png"
-                alt="Wedding logo" 
+                alt="Wedding logo"
                 className="mx-4 h-18 w-18 object-contain"
                 style={{ height: "68px", width: "68px" }}
               />
               <div className="h-px bg-[hsl(0,0%,78%)] flex-1 max-w-[100px]"></div>
             </div>
-            
-            <h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A2E] " style={{fontFamily: 'oswald'}}>
+
+            <h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A2E] " style={{ fontFamily: 'oswald' }}>
               ORAN & YARIN
             </h1>
             <p className="mb-4 text-lg md:text-xl font-bold text-[#1A1A2E] font-heebo">
               ARE GETTING MARRIED
             </p>
-            
+
             <Separator className="my-4 bg-[#D4AF7A]/30" />
-            
+
             <p className="mb-6 mt-4 text-[#333333] text-base md:text-lg font-heebo">
               נרגשים להזמינכם לחגוג איתנו את היום המאושר בחיינו
             </p>
             <p className="mb-2 text-lg md:text-xl font-semibold text-[#333333] font-heebo">א' בסיוון התשפ"ה</p>
             <p className="mb-6 text-lg md:text-xl text-[#333333] font-heebo ">
               <span className='font-bold'>27.05.2025</span>
-              </p>
+            </p>
             <p className="mb-6 text-lg md:text-xl text-[#333333] font-heebo">{weddingDetails.venueName}, {weddingDetails.venueAddress}</p>
-            
+
             <div className="flex flex-row justify-center gap-6 md:gap-12 my-4 font-heebo">
               <div className="flex flex-col items-center justify-center text-base md:text-lg">
                 <span className="text-[#333333] font-heebo">קבלת פנים</span>
@@ -141,22 +144,22 @@ const Index = () => {
                 <span className="text-[#333333] font-heebo">20:30</span>
               </div>
             </div>
-            
+
             <div className="mt-8 border-t border-[#D4AF7A]/30 pt-6">
               <RSVPButtons />
             </div>
           </div>
-          
+
           <Countdown />
-          
+
           <MapLinks />
-          
+
           <div className="wedding-card bg-white/90 backdrop-blur-sm rounded-lg shadow-lg">
             <BitPayment />
           </div>
         </div>
       </div>
-      
+
       <footer className="py-4 text-center text-white bg-black/40 backdrop-blur-sm font-heebo">
         <p className="text-xs md:text-sm font-heebo">
           ORAN &amp; YARIN | {format(weddingDate, 'dd.MM.yyyy')}
