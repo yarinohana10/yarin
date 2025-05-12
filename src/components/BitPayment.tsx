@@ -12,11 +12,11 @@ export const BitPayment = () => {
     bankAccountNumber: ''
   });
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     const fetchBankDetails = async () => {
       if (!weddingDetails.id) return;
-      
+
       try {
         // First try to get from bank_transfers table
         const { data: bankData, error: bankError } = await supabase
@@ -25,7 +25,7 @@ export const BitPayment = () => {
           .eq('wedding_id', weddingDetails.id)
           .order('created_at', { ascending: false })
           .limit(1);
-        
+
         if (!bankError && bankData && bankData.length > 0) {
           setBankDetails({
             bankAccountHolder: bankData[0].bank_account_holder,
@@ -48,44 +48,45 @@ export const BitPayment = () => {
         setLoading(false);
       }
     };
-    
+
     fetchBankDetails();
   }, [weddingDetails.id]);
-  
+  console.log(' weddingDetails.bitNumber',  weddingDetails.bitNumber)
   // Only show if bit number or bank details exist
   if (!weddingDetails.bitNumber && !bankDetails.bankNumber) return null;
-  
+
   const bitLink = weddingDetails.bitNumber
     ? `https://www.bitpay.co.il/app/pay?phone=${weddingDetails.bitNumber.replace(/-/g, '')}`
     : null;
-  
+
   const payboxLink = weddingDetails.bitNumber
-    ? `https://payboxapp.page.link/?link=https://paybox.com/send/${weddingDetails.bitNumber.replace(/-/g, '')}&apn=com.payboxapp&isi=1299546686&ibi=com.payboxapp`
+    // ? `https://payboxapp.page.link/?link=https://paybox.com/send/${weddingDetails.bitNumber.replace(/-/g, '')}&apn=com.payboxapp&isi=1299546686&ibi=com.payboxapp`
+    ? `paybox://`
     : null;
-  
+
   return (
     <div className="p-4 sm:p-6 md:p-8 text-center">
       <div className="space-y-3 sm:space-y-4">
         <h3 className="text-lg sm:text-xl font-semibold text-[#1A1A2E]">לנוחיותכם, ניתן להעניק מתנות באפליקציית ביט או פייבוקס </h3>
-        
+
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-3 sm:mb-4">
           {bitLink && (
-            <a 
+            <a
               href={bitLink}
-              target="_blank" 
-              rel="noopener noreferrer" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#F0B6BC] to-[#FFD1DC] text-[#1A1A2E] rounded-xl hover:opacity-90 transition-all duration-300 shadow-md text-sm sm:text-base w-full sm:w-auto"
             >
               <CreditCard className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               שליחת מתנה ב-Bit
             </a>
           )}
-          
+
           {payboxLink && (
-            <a 
+            <a
               href={payboxLink}
-              target="_blank" 
-              rel="noopener noreferrer" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#4CAF50] to-[#81C784] text-white rounded-xl hover:opacity-90 transition-all duration-300 shadow-md text-sm sm:text-base w-full sm:w-auto"
             >
               <CreditCard className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
