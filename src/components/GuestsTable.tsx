@@ -106,7 +106,7 @@ export function GuestsTable({ weddingId, status, onRefresh }: GuestsTableProps) 
   };
 
   const handleGuestUpdate = () => {
-    console.log("Refreshing guest list after update");
+    // console.log("Refreshing guest list after update");
     fetchGuests();
     if (onRefresh) onRefresh();
   };

@@ -83,8 +83,8 @@ export const RSVPButtons = () => {
       });
       return;
     }
-    
-    if (phoneNumber && phoneNumber.length !== 10) {
+
+    if (phoneNumber && phoneNumber.length !== 10 || !phoneNumber.trim()) {
       toast({
         variant: "destructive",
         title: "מספר טלפון לא תקין",
@@ -127,7 +127,7 @@ export const RSVPButtons = () => {
           throw updateError;
         }
       } else {
-        console.log("Creating new guest with wedding_id:", weddingId);
+        // console.log("Creating new guest with wedding_id:", weddingId);
         const { error: insertError } = await supabase
           .from('guests')
           .insert({

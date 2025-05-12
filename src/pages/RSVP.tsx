@@ -122,7 +122,7 @@ const RSVP = () => {
     setSubmitting(true);
     
     try {
-      console.log("Checking for existing guest with name:", guestName, "and phone:", phoneNumber);
+      // console.log("Checking for existing guest with name:", guestName, "and phone:", phoneNumber);
       
       const { data: existingGuests, error: fetchError } = await supabase
         .from('guests')

@@ -31,7 +31,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
 
   useEffect(() => {
     // For debugging
-    console.log('ProtectedRoute: isAuthenticated =', isAuthenticated, 'loading =', loading);
+    // console.log('ProtectedRoute: isAuthenticated =', isAuthenticated, 'loading =', loading);
   }, [isAuthenticated, loading]);
 
   if (loading) {
