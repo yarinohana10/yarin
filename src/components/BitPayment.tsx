@@ -51,7 +51,6 @@ export const BitPayment = () => {
 
     fetchBankDetails();
   }, [weddingDetails.id]);
-  console.log(' weddingDetails.bitNumber',  weddingDetails.bitNumber)
   // Only show if bit number or bank details exist
   if (!weddingDetails.bitNumber && !bankDetails.bankNumber) return null;
 
