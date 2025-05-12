@@ -60,7 +60,7 @@ export const BitPayment = () => {
 
   const payboxLink = weddingDetails.bitNumber
     // ? `https://payboxapp.page.link/?link=https://paybox.com/send/${weddingDetails.bitNumber.replace(/-/g, '')}&apn=com.payboxapp&isi=1299546686&ibi=com.payboxapp`
-    ? `paybox://`
+    ? `https://link.payboxapp.com/UCWERAsQ9gVJBmtr6`
     : null;
 
   return (
