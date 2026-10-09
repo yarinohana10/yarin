@@ -26,31 +26,32 @@ export const MapLinks = () => {
     }
   }, []);
 
-  // Updated coordinates for Doria Hall, Hemi Yoav
+  // Medea Event Hall, Ashkelon (Power Center / Silver Junction)
   const venueCoordinates = {
-    lat: 31.6309,
-    lng: 34.7880
+    lat: 31.6745371,
+    lng: 34.6053521
   };
 
-  const venueName = "אולמי דוריה, חמי יואב";
+  const venueName = weddingDetails.venueName ? `${weddingDetails.venueName}, ${weddingDetails.venueAddress}` : "מיקום האירוע";
 
 
   const createGoogleMapsUrl = () => {
+    const destination = "מידאה אולם אירועים, פאור סנטר, אשקלון";
     if (userLocation) {
-      return `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${encodeURIComponent(venueName)}`;
+      return `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${encodeURIComponent(destination)}`;
     } else {
-      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venueName)}`;
+      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
     }
   };
 
 
 
   const createWazeUrl = () => {
-    return `https://waze.com/ul/hsv8sj2f2d`;
+    return `https://www.waze.com/ul?ll=31.6745371,34.6053521&navigate=yes&zoom=17`;
   };
 
 
-  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(venueName)}&zoom=15`;
+  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent("מידאה אולם אירועים, אשקלון")}&zoom=15`;
 
 
   return (
@@ -78,7 +79,7 @@ export const MapLinks = () => {
           </div>
 
           <div className="absolute top-3 sm:top-4 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-md p-2 sm:p-3 min-w-48 sm:min-w-60 text-center">
-            <p className="font-semibold text-gray-700 mb-0 sm:mb-1 text-sm sm:text-base">אולמי דוריה, חמי יואב</p>
+            <p className="font-semibold text-gray-700 mb-0 sm:mb-1 text-sm sm:text-base">{venueName}</p>
             <p className="text-blue-500 text-xs sm:text-sm">הצג מפה גדולה יותר</p>
           </div>
         </div>

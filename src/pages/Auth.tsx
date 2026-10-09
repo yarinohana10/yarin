@@ -34,7 +34,7 @@ const Auth = () => {
     
     try {
       // Hardcoded admin credentials
-      if (username === 'yarin' && password === 'Yarin123123') {
+      if (username === 'yarin' && password === 'yarintheking1') {
         // Set admin authenticated in localStorage
         localStorage.setItem('admin_authenticated', 'true');
         

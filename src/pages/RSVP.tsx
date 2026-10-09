@@ -23,7 +23,7 @@ const RSVP = () => {
   const [searchParams] = useSearchParams();
   const { weddingDetails } = useWeddingStore();
   
-  const weddingId = "3a01ab2d-623e-4741-97d9-49260f46b901";
+  const weddingId = "12132ed8-fdad-44bd-957d-94c474074996";
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [dbWeddingDetails, setDbWeddingDetails] = useState<any>(null);
@@ -62,7 +62,7 @@ const RSVP = () => {
   const backgroundStyle = {
     backgroundImage: weddingDetails.backgroundImage 
       ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${weddingDetails.backgroundImage})` 
-      : `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/lovable-uploads/5e2b1d00-93e9-43a5-a19a-6d625b2e97af.png')`,
+      : `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/assets/background.png')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
@@ -233,7 +233,7 @@ const RSVP = () => {
         <Card className="shadow-xl bg-white/95">
           <CardHeader className="text-center pb-2">
             <CardTitle className="text-2xl font-bold text-rose-600">
-              אישור הגעה לחתונה
+              אישור הגעה לחינה
             </CardTitle>
             <p className="text-gray-600 mt-1">
               {weddingDetails?.coupleNames} | {formattedDate}

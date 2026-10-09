@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import { he } from 'date-fns/locale';
 import { formatInTimeZone } from 'date-fns-tz';
 import { Link } from 'react-router-dom';
-import { Settings, Clock, Heart } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Countdown } from '@/components/Countdown';
 import { RSVPButtons } from '@/components/RSVPButtons';
@@ -35,8 +35,8 @@ const Index = () => {
             id: weddingData.id,
             coupleNames: weddingData.couple_names,
             weddingDate: weddingData.wedding_date,
-            venueName: weddingData.venue_address,
-            venueAddress: weddingData.venue_name,
+            venueName: weddingData.venue_name,
+            venueAddress: weddingData.venue_address,
             venueMapLink: weddingData.venue_map_link || '',
             wazeLink: weddingData.waze_link || '',
             bitNumber: weddingData.bit_number || '',
@@ -44,7 +44,7 @@ const Index = () => {
             bankBranch: weddingData.bank_branch || '',
             bankAccountNumber: weddingData.bank_account_number || '',
             bankAccountHolder: weddingData.bank_account_holder || '',
-            backgroundImage: weddingData.background_image || '/lovable-uploads/5e2b1d00-93e9-43a5-a19a-6d625b2e97af.png',
+            backgroundImage: weddingData.background_image || '',
           });
         }
       } catch (error) {
@@ -68,7 +68,7 @@ const Index = () => {
   const backgroundStyle = {
     backgroundImage: weddingDetails.backgroundImage
       ? `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(${weddingDetails.backgroundImage})`
-      : `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(/lovable-uploads/5e2b1d00-93e9-43a5-a19a-6d625b2e97af.png)`,
+      : `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(/assets/background.png)`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',
@@ -106,8 +106,8 @@ const Index = () => {
             <div className="flex justify-center items-center mb-6">
               <div className="h-px bg-[hsl(0,0%,78%)] flex-1 max-w-[100px]"></div>
               <img
-                src="/lovable-uploads/994e3256-15d1-42d2-bdb8-1d09b9cc4927.png"
-                alt="Wedding logo"
+                src="/assets/le-logo.svg"
+                alt="Henna logo"
                 className="mx-4 h-18 w-18 object-contain"
                 style={{ height: "68px", width: "68px" }}
               />
@@ -115,33 +115,34 @@ const Index = () => {
             </div>
 
             <h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A2E] " style={{ fontFamily: 'oswald' }}>
-              ORAN & YARIN
+              LIAN & ELI
             </h1>
             <p className="mb-4 text-lg md:text-xl font-bold text-[#1A1A2E] font-heebo">
-              ARE GETTING MARRIED
+              THE HENNA
             </p>
 
             <Separator className="my-4 bg-[#D4AF7A]/30" />
 
             <p className="mb-6 mt-4 text-[#333333] text-base md:text-lg font-heebo">
-              נרגשים להזמינכם לחגוג איתנו את היום המאושר בחיינו
+              שמחים להזמינכם לחגוג עמנו את
+              <br />
+              טקס החינה שלנו
             </p>
-            <p className="mb-2 text-lg md:text-xl font-semibold text-[#333333] font-heebo">א' בסיוון התשפ"ה</p>
+            <p className="mb-2 text-lg md:text-xl font-semibold text-[#333333] font-heebo">יום שלישי, כ"ג בחשוון תשפ"ז</p>
             <p className="mb-6 text-lg md:text-xl text-[#333333] font-heebo ">
-              <span className='font-bold'>27.05.2025</span>
+              <span className='font-bold'>03.11.2026</span>
             </p>
-            <p className="mb-6 text-lg md:text-xl text-[#333333] font-heebo">{weddingDetails.venueName}, {weddingDetails.venueAddress}</p>
+            <p className="mb-2 text-lg md:text-xl text-[#333333] font-heebo">אולמי "MEDEA" | מתחם "פאור סנטר", אשקלון</p>
+            <p className="mb-6 text-base md:text-lg font-semibold text-[#333333] font-heebo">בשעה 19:30</p>
 
-            <div className="flex flex-row justify-center gap-6 md:gap-12 my-4 font-heebo">
-              <div className="flex flex-col items-center justify-center text-base md:text-lg">
-                <span className="text-[#333333] font-heebo">קבלת פנים</span>
-                <Clock className="h-4 w-4 md:h-5 md:w-5 text-[#333333] mx-2 my-1" />
-                <span className="text-[#333333] font-heebo">19:30</span>
+            <div className="flex flex-row justify-center gap-8 md:gap-16 my-4 font-heebo text-sm md:text-base">
+              <div className="flex flex-col items-center text-center">
+                <span className="font-semibold text-[#333333]">הורי החתן</span>
+                <span className="text-[#555555]">דרור ושרה בוזגלו</span>
               </div>
-              <div className="flex flex-col items-center justify-center text-base md:text-lg">
-                <span className="text-[#333333] font-heebo">חופה וקידושין</span>
-                <Heart className="h-4 w-4 md:h-5 md:w-5 text-[#333333] mx-2 my-1 bg-white/0" />
-                <span className="text-[#333333] font-heebo">20:30</span>
+              <div className="flex flex-col items-center text-center">
+                <span className="font-semibold text-[#333333]">הורי הכלה</span>
+                <span className="text-[#555555]">אליעזר וטלי מכלוף</span>
               </div>
             </div>
 
@@ -162,7 +163,7 @@ const Index = () => {
 
       <footer className="py-4 text-center text-white bg-black/40 backdrop-blur-sm font-heebo">
         <p className="text-xs md:text-sm font-heebo">
-          ORAN &amp; YARIN | {format(weddingDate, 'dd.MM.yyyy')}
+          LIAN &amp; ELI | {format(weddingDate, 'dd.MM.yyyy')}
         </p>
       </footer>
     </div>

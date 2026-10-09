@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Wreath circle made of small leaf/branch marks -->
+  <g fill="none" stroke="#8B8B8B" stroke-width="1" stroke-linecap="round">
+    <!-- Top leaves -->
+    <path d="M100 18 Q102 12 100 8" />
+    <path d="M100 18 Q98 12 100 8" />
+    <path d="M108 19 Q112 13 111 9" />
+    <path d="M108 19 Q106 13 111 9" />
+    <path d="M92 19 Q88 13 89 9" />
+    <path d="M92 19 Q94 13 89 9" />
+    
+    <!-- Top-right leaves -->
+    <path d="M120 23 Q125 18 126 13" />
+    <path d="M120 23 Q118 17 126 13" />
+    <path d="M131 30 Q137 26 140 21" />
+    <path d="M131 30 Q129 24 140 21" />
+    <path d="M141 39 Q148 36 152 32" />
+    <path d="M141 39 Q139 33 152 32" />
+    <path d="M149 50 Q156 48 161 44" />
+    <path d="M149 50 Q148 44 161 44" />
+    <path d="M156 62 Q163 61 168 58" />
+    <path d="M156 62 Q155 56 168 58" />
+    <path d="M161 75 Q168 75 173 73" />
+    <path d="M161 75 Q161 69 173 73" />
+    <path d="M164 88 Q171 89 176 88" />
+    <path d="M164 88 Q164 82 176 88" />
+    
+    <!-- Right leaves -->
+    <path d="M165 100 Q172 102 177 102" />
+    <path d="M165 100 Q172 98 177 102" />
+    
+    <!-- Bottom-right leaves -->
+    <path d="M164 112 Q171 111 176 112" />
+    <path d="M164 112 Q164 118 176 112" />
+    <path d="M161 125 Q168 125 173 127" />
+    <path d="M161 125 Q161 131 173 127" />
+    <path d="M156 138 Q163 139 168 142" />
+    <path d="M156 138 Q155 144 168 142" />
+    <path d="M149 150 Q156 152 161 156" />
+    <path d="M149 150 Q148 156 161 156" />
+    <path d="M141 161 Q148 164 152 168" />
+    <path d="M141 161 Q139 167 152 168" />
+    <path d="M131 170 Q137 174 140 179" />
+    <path d="M131 170 Q129 176 140 179" />
+    <path d="M120 177 Q125 182 126 187" />
+    <path d="M120 177 Q118 183 126 187" />
+    
+    <!-- Bottom leaves -->
+    <path d="M108 181 Q112 187 111 191" />
+    <path d="M108 181 Q106 187 111 191" />
+    <path d="M100 182 Q102 188 100 192" />
+    <path d="M100 182 Q98 188 100 192" />
+    <path d="M92 181 Q88 187 89 191" />
+    <path d="M92 181 Q94 187 89 191" />
+    
+    <!-- Bottom-left leaves -->
+    <path d="M80 177 Q75 182 74 187" />
+    <path d="M80 177 Q82 183 74 187" />
+    <path d="M69 170 Q63 174 60 179" />
+    <path d="M69 170 Q71 176 60 179" />
+    <path d="M59 161 Q52 164 48 168" />
+    <path d="M59 161 Q61 167 48 168" />
+    <path d="M51 150 Q44 152 39 156" />
+    <path d="M51 150 Q52 156 39 156" />
+    <path d="M44 138 Q37 139 32 142" />
+    <path d="M44 138 Q45 144 32 142" />
+    <path d="M39 125 Q32 125 27 127" />
+    <path d="M39 125 Q39 131 27 127" />
+    <path d="M36 112 Q29 111 24 112" />
+    <path d="M36 112 Q36 118 24 112" />
+    
+    <!-- Left leaves -->
+    <path d="M35 100 Q28 102 23 102" />
+    <path d="M35 100 Q28 98 23 102" />
+    
+    <!-- Top-left leaves -->
+    <path d="M36 88 Q29 89 24 88" />
+    <path d="M36 88 Q36 82 24 88" />
+    <path d="M39 75 Q32 75 27 73" />
+    <path d="M39 75 Q39 69 27 73" />
+    <path d="M44 62 Q37 61 32 58" />
+    <path d="M44 62 Q45 56 32 58" />
+    <path d="M51 50 Q44 48 39 44" />
+    <path d="M51 50 Q52 44 39 44" />
+    <path d="M59 39 Q52 36 48 32" />
+    <path d="M59 39 Q61 33 48 32" />
+    <path d="M69 30 Q63 26 60 21" />
+    <path d="M69 30 Q71 24 60 21" />
+    <path d="M80 23 Q75 18 74 13" />
+    <path d="M80 23 Q82 17 74 13" />
+  </g>
+  
+  <!-- Letters L & E -->
+  <text x="68" y="110" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="normal" fill="#4A4A4A" text-anchor="middle" letter-spacing="1">L</text>
+  <text x="100" y="110" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="normal" fill="#9B9B9B" text-anchor="middle">&amp;</text>
+  <text x="132" y="110" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="normal" fill="#4A4A4A" text-anchor="middle" letter-spacing="1">E</text>
+</svg>

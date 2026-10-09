@@ -14,10 +14,12 @@ export const Countdown = () => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const weddingDate = new Date(weddingDetails.weddingDate);
+      // The event is at 19:30 Israel time (Asia/Jerusalem = UTC+2 in winter)
+      // Force the target date to be interpreted as Israel time
+      const eventDate = new Date('2026-11-03T19:30:00+02:00');
       const now = new Date();
       
-      if (weddingDate <= now) {
+      if (eventDate <= now) {
         return {
           days: 0,
           hours: 0,
@@ -27,10 +29,10 @@ export const Countdown = () => {
       }
       
       return {
-        days: differenceInDays(weddingDate, now),
-        hours: differenceInHours(weddingDate, now) % 24,
-        minutes: differenceInMinutes(weddingDate, now) % 60,
-        seconds: differenceInSeconds(weddingDate, now) % 60
+        days: differenceInDays(eventDate, now),
+        hours: differenceInHours(eventDate, now) % 24,
+        minutes: differenceInMinutes(eventDate, now) % 60,
+        seconds: differenceInSeconds(eventDate, now) % 60
       };
     };
 

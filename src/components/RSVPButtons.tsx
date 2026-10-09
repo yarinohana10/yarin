@@ -19,7 +19,7 @@ export const RSVPButtons = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
-  const weddingId = "3a01ab2d-623e-4741-97d9-49260f46b901";
+  const weddingId = "12132ed8-fdad-44bd-957d-94c474074996";
   const [loading, setLoading] = useState(false);
   
   const [guestName, setGuestName] = useState('');

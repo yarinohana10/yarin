@@ -21,8 +21,8 @@ export const formatGoogleCalendarUrl = () => {
   const end = endTime.toISOString().replace(/-|:|\.\d+/g, '');
   
   // Create the event title and details
-  const title = `חתונה של ירין & אוראן`;
-  const details = `קבלת פנים\n19:30\nחופה וקידושין\n20:30`;
+  const title = `חינה של ליאן & אלי`;
+  const details = `קבלת פנים\n19:30\nחינה\n20:30`;
   const location = `${weddingDetails.venueName}, ${weddingDetails.venueAddress}`;
   
   // Build the Google Calendar URL
