@@ -22,7 +22,7 @@ const ThankYou = () => {
   const backgroundStyle = {
     backgroundImage: weddingDetails.backgroundImage 
       ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${weddingDetails.backgroundImage})` 
-      : `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(/assets/background.png)`,
+      : `url(/assets/background.png)`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
@@ -52,7 +52,7 @@ const ThankYou = () => {
               <p className="text-base md:text-lg mb-6">
                 נתראה בשמחה
                 <br />
-                <span className="text-lg md:text-xl font-semibold">LIAN & ELI</span>
+                <span className="text-lg md:text-xl font-semibold">ELI & LIAN</span>
               </p>
               
               {/* Google Calendar Button */}
@@ -68,7 +68,7 @@ const ThankYou = () => {
               <p className="text-base md:text-lg mb-6">
                 נשמח לראותך
                 <br />
-                <span className="text-lg md:text-xl font-semibold">LIAN & ELI</span>
+                <span className="text-lg md:text-xl font-semibold">ELI & LIAN</span>
               </p>
               
               {/* Google Calendar Button for 'maybe' attendees too */}
@@ -84,7 +84,7 @@ const ThankYou = () => {
               <p className="text-base md:text-lg mb-6">
                 נשמח לראותך באירועים הבאים
                 <br />
-                <span className="text-lg md:text-xl font-semibold">LIAN & ELI</span>
+                <span className="text-lg md:text-xl font-semibold">ELI & LIAN</span>
               </p>
             </>
           )}

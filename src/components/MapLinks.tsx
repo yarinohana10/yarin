@@ -26,33 +26,34 @@ export const MapLinks = () => {
     }
   }, []);
 
-  // Medea Event Hall, Ashkelon (Power Center / Silver Junction)
   const venueCoordinates = {
-    lat: 31.6745371,
-    lng: 34.6053521
+    lat: 31.6309,
+    lng: 34.7880
   };
 
-  const venueName = weddingDetails.venueName ? `${weddingDetails.venueName}, ${weddingDetails.venueAddress}` : "מיקום האירוע";
-
+  const venueQuery = 'אולמי דוריה, שדה יואב';
+  const venueName = weddingDetails.venueName
+    ? `${weddingDetails.venueName}, ${weddingDetails.venueAddress}`
+  : venueQuery;
 
   const createGoogleMapsUrl = () => {
-    const destination = "מידאה אולם אירועים, פאור סנטר, אשקלון";
+    const destinationLabel = `${weddingDetails.venueName || 'אולמי דוריה, היכל'}, ${weddingDetails.venueAddress || 'שדה יואב'}`;
+    const destinationCoords = `${venueCoordinates.lat},${venueCoordinates.lng}`;
+
     if (userLocation) {
-      return `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${encodeURIComponent(destination)}`;
-    } else {
-      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
+      return `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${destinationCoords}`;
     }
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destinationLabel)}`;
   };
-
-
 
   const createWazeUrl = () => {
-    return `https://www.waze.com/ul?ll=31.6745371,34.6053521&navigate=yes&zoom=17`;
+    if (weddingDetails.wazeLink) {
+      return weddingDetails.wazeLink;
+    }
+    return `https://www.waze.com/ul?ll=${venueCoordinates.lat},${venueCoordinates.lng}&navigate=yes&zoom=17`;
   };
 
-
-  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent("מידאה אולם אירועים, אשקלון")}&zoom=15`;
-
+  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(venueQuery)}&zoom=15`;
 
   return (
     <div className="max-w-md mx-auto w-full">

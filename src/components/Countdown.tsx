@@ -14,9 +14,8 @@ export const Countdown = () => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      // The event is at 19:30 Israel time (Asia/Jerusalem = UTC+2 in winter)
-      // Force the target date to be interpreted as Israel time
-      const eventDate = new Date('2026-11-03T19:30:00+02:00');
+      const datePart = weddingDetails.weddingDate?.split('T')[0] || '2026-12-01';
+      const eventDate = new Date(`${datePart}T19:30:00+02:00`);
       const now = new Date();
       
       if (eventDate <= now) {

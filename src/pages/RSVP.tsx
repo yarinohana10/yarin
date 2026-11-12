@@ -62,7 +62,7 @@ const RSVP = () => {
   const backgroundStyle = {
     backgroundImage: weddingDetails.backgroundImage 
       ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${weddingDetails.backgroundImage})` 
-      : `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/assets/background.png')`,
+      : `url('/assets/background.png')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
@@ -233,7 +233,7 @@ const RSVP = () => {
         <Card className="shadow-xl bg-white/95">
           <CardHeader className="text-center pb-2">
             <CardTitle className="text-2xl font-bold text-rose-600">
-              אישור הגעה לחינה
+              אישור הגעה לחתונה
             </CardTitle>
             <p className="text-gray-600 mt-1">
               {weddingDetails?.coupleNames} | {formattedDate}
