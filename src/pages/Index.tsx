@@ -115,7 +115,7 @@ const Index = () => {
             </div>
 
             <h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A2E] " style={{ fontFamily: 'oswald' }}>
-              ELI & LIAN
+              LIAN & ELI
             </h1>
             <p className="mb-4 text-lg md:text-xl font-bold text-[#1A1A2E] font-heebo">
               THE WEDDING
@@ -139,12 +139,12 @@ const Index = () => {
               <div className="flex flex-col items-center justify-center text-base md:text-lg">
                 <span className="text-[#333333] font-heebo">קבלת פנים</span>
                 <Clock className="h-4 w-4 md:h-5 md:w-5 text-[#333333] mx-2 my-1" />
-                <span className="text-[#333333] font-heebo">19:30</span>
+                <span className="text-[#333333] font-heebo">19:00</span>
               </div>
               <div className="flex flex-col items-center justify-center text-base md:text-lg">
                 <span className="text-[#333333] font-heebo">חופה וקידושין</span>
                 <Heart className="h-4 w-4 md:h-5 md:w-5 text-[#333333] mx-2 my-1 bg-white/0" />
-                <span className="text-[#333333] font-heebo">20:30</span>
+                <span className="text-[#333333] font-heebo">20:00</span>
               </div>
             </div>
 
@@ -176,7 +176,7 @@ const Index = () => {
 
       <footer className="py-4 text-center text-[#333333] bg-white/70 backdrop-blur-sm font-heebo">
         <p className="text-xs md:text-sm font-heebo">
-          ELI &amp; LIAN | {format(weddingDate, 'dd.MM.yyyy')}
+          LIAN &amp; ELI | {format(weddingDate, 'dd.MM.yyyy')}
         </p>
       </footer>
     </div>

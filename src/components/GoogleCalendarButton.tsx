@@ -11,18 +11,18 @@ export const formatGoogleCalendarUrl = () => {
   
   // Start and end times (assuming event lasts 5 hours)
   const startTime = new Date(weddingDate);
-  startTime.setHours(19, 30, 0); // Reception at 19:30
+  startTime.setHours(19, 0, 0); // Reception at 19:00
   
   const endTime = new Date(weddingDate);
-  endTime.setHours(24, 30, 0); // End time (5 hours later)
+  endTime.setHours(24, 0, 0); // End time (5 hours later)
   
   // Format dates for the URL
   const start = startTime.toISOString().replace(/-|:|\.\d+/g, '');
   const end = endTime.toISOString().replace(/-|:|\.\d+/g, '');
   
   // Create the event title and details
-  const title = `חתונת אלי & ליאן`;
-  const details = `קבלת פנים\n19:30\nחופה וקידושין\n20:30`;
+  const title = `חתונת ליאן & אלי`;
+  const details = `קבלת פנים\n19:00\nחופה וקידושין\n20:00`;
   const location = `${weddingDetails.venueName}, ${weddingDetails.venueAddress}`;
   
   // Build the Google Calendar URL

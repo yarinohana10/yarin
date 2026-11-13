@@ -15,7 +15,7 @@ export const Countdown = () => {
   useEffect(() => {
     const calculateTimeLeft = () => {
       const datePart = weddingDetails.weddingDate?.split('T')[0] || '2026-12-01';
-      const eventDate = new Date(`${datePart}T19:30:00+02:00`);
+      const eventDate = new Date(`${datePart}T19:00:00+02:00`);
       const now = new Date();
       
       if (eventDate <= now) {

@@ -39,9 +39,9 @@ export const useWeddingStore = create<WeddingStore>()(
   persist(
     (set) => ({
       weddingDetails: {
-        coupleNames: 'אלי & ליאן',
-        weddingDate: '2026-12-01T19:30:00',
-        weddingTime: '19:30',
+        coupleNames: 'ליאן & אלי',
+        weddingDate: '2026-12-01T19:00:00',
+        weddingTime: '19:00',
         venueName: 'אולמי דוריה, היכל',
         venueAddress: 'שדה יואב',
         venueMapLink: 'https://www.google.com/maps/search/?api=1&query=%D7%90%D7%95%D7%9C%D7%9E%D7%99%20%D7%93%D7%95%D7%A8%D7%99%D7%94%2C%20%D7%A9%D7%93%D7%94%20%D7%99%D7%95%D7%90%D7%91',
